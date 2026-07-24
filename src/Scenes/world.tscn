@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://doaufgbkuupix" path="res://Scenes/day_night.tscn" id="3_5a7ea"]
 [ext_resource type="Texture2D" uid="uid://c8a8ausykmb1k" path="res://Assets/terrain/beaver_water_tileset.png" id="3_o06y3"]
 [ext_resource type="PackedScene" uid="uid://bt5ebggasfjbm" path="res://Scenes/template/interactable.tscn" id="4_8j60k"]
+[ext_resource type="Texture2D" uid="uid://c0rk3yc21s10o" path="res://Assets/bigrock.png" id="8_k7acu"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_k7acu"]
 texture = ExtResource("1_5ukr8")
@@ -1065,3 +1066,7 @@ day_length_in_minutes = 0.5
 position = Vector2(269, -111)
 
 [node name="item_holder" type="Node2D" parent="." unique_id=1016398915]
+
+[node name="Rocktest" type="Sprite2D" parent="." unique_id=927677769]
+position = Vector2(-261, -134)
+texture = ExtResource("8_k7acu")
