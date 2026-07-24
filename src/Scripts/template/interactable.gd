@@ -28,14 +28,11 @@ func _on_detection_box_body_entered(body: Node2D) -> void:
 
 
 func interact() -> void:
-	print("ineteracted")
 	if can_drop:
-		test_drop()
+		drop()
 
-func test_drop() -> void:
-	var item = ItemDrop.setup(drop_item, global_position, drop_amount, 500)
+func drop() -> void:
+	var item = ItemDrop.setup(drop_item, global_position, drop_amount, 200)
 
-	var holder = get_tree().root
-
-	holder.add_child(item)
+	get_tree().root.add_child(item)
 	can_drop = false

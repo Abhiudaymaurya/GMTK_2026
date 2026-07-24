@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://bjdcij7cu3meq" path="res://Assets/terrain/beaver_grass_tileset.png" id="2_o06y3"]
 [ext_resource type="PackedScene" uid="uid://doaufgbkuupix" path="res://Scenes/day_night.tscn" id="3_5a7ea"]
 [ext_resource type="Texture2D" uid="uid://c8a8ausykmb1k" path="res://Assets/terrain/beaver_water_tileset.png" id="3_o06y3"]
+[ext_resource type="PackedScene" uid="uid://tlu03qk51453" path="res://Scenes/rock.tscn" id="6_5ukr8"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_k7acu"]
 texture = ExtResource("1_5ukr8")
@@ -1098,4 +1099,7 @@ tile_set = SubResource("TileSet_a8ku5")
 visible = false
 day_length_in_minutes = 0.5
 
-[node name="item_holder" type="Node2D" parent="." unique_id=1016398915]
+[node name="rock" parent="." unique_id=1652929144 instance=ExtResource("6_5ukr8")]
+position = Vector2(93, 183)
+amount = 200
+steps_to_break = 5

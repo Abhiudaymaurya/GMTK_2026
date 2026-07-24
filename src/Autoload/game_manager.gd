@@ -12,6 +12,9 @@ enum Item {
 
 var player_inventory: Dictionary[Item, int] = {}
 
+# func _process(delta):
+# 	print(player_inventory)
+
 func _ready() -> void:
 	for item in Item.values():
 		player_inventory[item] = 0

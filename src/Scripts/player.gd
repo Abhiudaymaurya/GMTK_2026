@@ -1,7 +1,9 @@
 extends CharacterBody2D
 
-const MOVEMENT_SCALE: int = 50
-const SPEED = 300.0 * MOVEMENT_SCALE
+const NORMAL_SPEED: float = 300.0 * 50.0
+const WATER_SPEED: float = 300.0 * 35.0
+
+var speed: float = NORMAL_SPEED
 
 @onready var river_tile_map = $"../terrain_layers/river-water"
 @onready var water_overlay: Sprite2D = $"water_overlay"
@@ -27,11 +29,11 @@ func _physics_process(delta: float) -> void:
 	var direction := Input.get_vector("move_left", "move_right", "move_up", "move_down").normalized()
 
 	handle_animation(direction)
-	
-	if direction:
-		velocity = direction * SPEED * delta
+
+	if direction != Vector2.ZERO:
+		velocity = direction * speed * delta
 	else:
-		velocity = velocity.move_toward(Vector2.ZERO, SPEED)
+		velocity = Vector2.ZERO
 
 	move_and_slide()
 
@@ -45,8 +47,10 @@ func _on_context_update(interactable, entered: bool) -> void:
 
 func handle_animation(dir: Vector2) -> void:
 	if is_player_in_water():
+		speed = WATER_SPEED
 		water_overlay.visible = true
 	else:
+		speed = NORMAL_SPEED
 		water_overlay.visible = false
 
 	if dir != Vector2.ZERO:
