@@ -3,8 +3,8 @@
 [ext_resource type="Script" uid="uid://chxx10ujwuryy" path="res://Scripts/day_night.gd" id="1_mvrpg"]
 
 [sub_resource type="Gradient" id="Gradient_mvrpg"]
-offsets = PackedFloat32Array(0, 0.2951807, 0.48795182, 0.71686745, 1)
-colors = PackedColorArray(0, 0, 0.1882353, 1, 0.4209198, 0.07526366, 0.6568692, 1, 0.743683, 0.16596672, 0.6634277, 1, 0.8150418, 0.60501426, 0.61071867, 1, 1, 1, 1, 1)
+offsets = PackedFloat32Array(0.090361446, 0.48795182, 0.71686745, 1)
+colors = PackedColorArray(0.4209198, 0.07526366, 0.6568692, 1, 0.743683, 0.16596672, 0.6634277, 1, 0.8150418, 0.60501426, 0.61071867, 1, 1, 1, 1, 1)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_t3a5w"]
 gradient = SubResource("Gradient_mvrpg")

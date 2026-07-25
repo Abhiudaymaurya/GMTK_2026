@@ -11,6 +11,9 @@ func _ready() -> void:
 	time = initial_hour / 24.0
 
 func _process(delta: float) -> void:
+	if GameManager.is_player_movement_freeze:
+		return
+		
 	time += delta / (day_length_in_minutes * 60.0)
 
 	if time >= 1.0:
