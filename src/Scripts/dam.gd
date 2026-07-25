@@ -88,8 +88,7 @@ func destroy_dam() -> void:
 	GameManager.dam_health = 0
 
 	# - Trigger game over
-	print("Dam destroyed")
-
+	GameManager.game_over("FLOODED")
 
 func get_health() -> int:
 	return GameManager.dam_health

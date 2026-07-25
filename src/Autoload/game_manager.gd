@@ -5,32 +5,38 @@ var development_mode = false;
 var time: float
 var day: int
 
+# Store references so other functions can use them
+var title: Label
+var description: Label
+var animation_player: AnimationPlayer
+var typewriter_audio: AudioStreamPlayer
 
 #dialogue_speed
 var dialogue_speed := 0.03
+var title_speed := 0.1
 const BEAVER_PORTRAIT = preload("uid://bnquvl81ws17j")
-var is_player_movement_freeze: float = false
+var is_player_movement_freeze: bool = false
 
 var dialogues = [
 	{
-		"image":BEAVER_PORTRAIT,
-		"text":"Winter is coming... and time is running out."
+		"image": BEAVER_PORTRAIT,
+		"text": "Winter is coming... and time is running out."
 	},
 	{
-		"image":BEAVER_PORTRAIT,
-		"text":"Before the first snowfall"
+		"image": BEAVER_PORTRAIT,
+		"text": "Before the first snowfall"
 	},
 	{
-		"image":BEAVER_PORTRAIT,
-		"text":"I must prepare food , Reinforce the dam"
+		"image": BEAVER_PORTRAIT,
+		"text": "I must prepare food , Reinforce the dam"
 	},
 	{
-		"image":BEAVER_PORTRAIT,
-		"text":"Protect my home."
+		"image": BEAVER_PORTRAIT,
+		"text": "Protect my home."
 	},
 	{
-		"image":BEAVER_PORTRAIT,
-		"text":"Every day counts."
+		"image": BEAVER_PORTRAIT,
+		"text": "Every day counts."
 	}
 ]
 
@@ -54,6 +60,8 @@ func _ready() -> void:
 	for item in Item.values():
 		player_inventory[item] = 0
 
+	SignalBus.day_changed.connect(_on_day_change)
+
 
 func inv_add_item(item: Item, amount: int = 1) -> void:
 	player_inventory[item] += amount
@@ -69,15 +77,32 @@ func inv_remove_item(item: Item, amount: int = 1) -> bool:
 
 func inv_has_item(item: Item, amount: int = 1) -> bool:
 	return player_inventory[item] >= amount
-	
-	
+
+
 # basic cutscene
 
 func basic_cutscene(camera: Camera2D, dialogue_ui: Control, texture_rect: TextureRect, text_label: Label , animation_player : AnimationPlayer , typewriter_audio : AudioStreamPlayer ,title,description):
 	if development_mode:
 		animation_player.play("close_dialogue_box")
 		return;
-	
+
+
+func basic_cutscene(
+		camera: Camera2D,
+		dialogue_ui: Control,
+		texture_rect: TextureRect,
+		text_label: Label,
+		animation_player_ref: AnimationPlayer,
+		typewriter_audio_ref: AudioStreamPlayer,
+		title_ref: Label,
+		description_ref: Label
+) -> void:
+	animation_player = animation_player_ref
+	typewriter_audio = typewriter_audio_ref
+	title = title_ref
+	description = description_ref
+
+
 	is_player_movement_freeze = true;
 	dialogue_ui.visible = false;
 
@@ -89,27 +114,26 @@ func basic_cutscene(camera: Camera2D, dialogue_ui: Control, texture_rect: Textur
 	await tween.finished
 	animation_player.play("open_dialogue_box")
 	await animation_player.animation_finished
-	
+
 	for d in dialogues:
-		await show_dialogue(texture_rect, text_label, d.image, d.text,camera,typewriter_audio);
+		await show_dialogue(texture_rect, text_label, d.image, d.text, camera, typewriter_audio);
 
 	animation_player.play("close_dialogue_box")
 	tween = create_tween();
 	tween.parallel().tween_property(camera, "zoom", Vector2(1.0, 1.0), 2.0)
 	tween.parallel().tween_property(camera, "offset", Vector2(0, 0), 2.0)
-	
+
 	await tween.finished;
-	black_screen(title,description,animation_player,typewriter_audio,"DAY 1","The countdown begins.")
-	
+	black_screen(title, description, animation_player, typewriter_audio, "7 DAY LEFt", "The countdown begins.")
+
 # show_dialogue function
 
-func show_dialogue(texture_rect: TextureRect, text_label: Label, image: Texture2D, message: String ,camera : Camera2D,typewriter_audio:AudioStreamPlayer):
-
+func show_dialogue(texture_rect: TextureRect, text_label: Label, image: Texture2D, message: String, camera: Camera2D, typewriter_audio: AudioStreamPlayer):
 	texture_rect.texture = image;
 	text_label.text = "";
-	
+
 	typewriter_audio.play();
-	
+
 	for c in message:
 		text_label.text += c
 		await get_tree().create_timer(dialogue_speed).timeout
@@ -121,8 +145,7 @@ func show_dialogue(texture_rect: TextureRect, text_label: Label, image: Texture2
 
 # wait_for_continue - wait for user to response;
 
-func wait_for_continue(camera : Camera2D):
-
+func wait_for_continue(camera: Camera2D):
 	while true:
 		await get_tree().process_frame
 		if Input.is_action_just_pressed("ui_accept"):
@@ -130,34 +153,89 @@ func wait_for_continue(camera : Camera2D):
 			break
 
 func black_screen(
-	title: Label,
-	description: Label,
-	animation_player: AnimationPlayer,
-	typewriter_audio : AudioStreamPlayer,
+	title_ref: Label,
+	description_ref: Label,
+	animation_player_ref: AnimationPlayer,
+	typewriter_audio_ref: AudioStreamPlayer,
 	screen_title: String,
 	screen_des: String
 ):
-	animation_player.play("open_black_screen")
-	await animation_player.animation_finished
+	animation_player_ref.play("open_black_screen")
+	await animation_player_ref.animation_finished
 
-	title.text = ""
-	description.text = ""
-	
-	typewriter_audio.play();
+	title_ref.text = ""
+	description_ref.text = ""
+
+	typewriter_audio_ref.play();
 	for c in screen_title:
-		title.text += c
-		await get_tree().create_timer(dialogue_speed).timeout
+		title_ref.text += c
+		await get_tree().create_timer(title_speed).timeout
 
 	await get_tree().create_timer(0.3).timeout
 
 	for c in screen_des:
-		description.text += c
+		description_ref.text += c
 		await get_tree().create_timer(dialogue_speed).timeout
 
-	typewriter_audio.stop();
+	typewriter_audio_ref.stop();
 	# Let the player read the text
 	await get_tree().create_timer(3.5).timeout
 
-	animation_player.play("close_black_screen")
-	await animation_player.animation_finished
+	animation_player_ref.play("close_black_screen")
+	await animation_player_ref.animation_finished
 	is_player_movement_freeze = false;
+
+
+func _on_day_change(new_day: int) -> void:
+	is_player_movement_freeze = true
+
+	await black_screen(title, description, animation_player, typewriter_audio,
+		str(7 - new_day) + " DAYS " + "LEFT",
+		"Another day has passed."
+	)
+
+
+	if new_day == 7:
+		await game_over(game_evaluation())
+
+func game_evaluation() -> String:
+	if stored_food < 100:
+		return "STARVED"
+	elif dam_health < 60:
+		return "FLOODED"
+	elif lodge_tier < 1:
+		return "FROZEN"
+	else:
+		return "SURVIVED"
+
+func game_over(state: String) -> void:
+	is_player_movement_freeze = true
+
+	match state:
+		"STARVED":
+			await black_screen(
+				title, description, animation_player, typewriter_audio,
+				"STARVED",
+				"You did not gather enough food to survive the winter."
+			)
+
+		"FLOODED":
+			await black_screen(
+				title, description, animation_player, typewriter_audio,
+				"FLOODED",
+				"Your dam could not withstand the winter."
+			)
+
+		"FROZEN":
+			await black_screen(
+				title, description, animation_player, typewriter_audio,
+				"FROZEN",
+				"Your lodge was not prepared for the freezing winter."
+			)
+
+		"SURVIVED":
+			await black_screen(
+				title, description, animation_player, typewriter_audio,
+				"SURVIVED",
+				"You prepared well and survived the winter."
+			)

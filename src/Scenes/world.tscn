@@ -1096,6 +1096,12 @@ shader_parameter/offSetSpeed = Vector2(0.1, 0.1)
 shader_parameter/backGroundDirX = 0.01
 shader_parameter/backGroundDirY = 0.01
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e0ngr"]
+size = Vector2(2310, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tqfvg"]
+size = Vector2(20, 1249)
+
 [node name="World" type="Node2D" unique_id=666092019]
 y_sort_enabled = true
 
@@ -1300,3 +1306,22 @@ position = Vector2(606, 438)
 
 [node name="storage" parent="structurs" unique_id=2051030974 instance=ExtResource("12_7yui6")]
 position = Vector2(466, 438)
+
+[node name="border" type="StaticBody2D" parent="." unique_id=1290778859]
+position = Vector2(-219, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="border" unique_id=1753356120]
+position = Vector2(1146, -44)
+shape = SubResource("RectangleShape2D_e0ngr")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="border" unique_id=542900170]
+position = Vector2(1168, 1104)
+shape = SubResource("RectangleShape2D_e0ngr")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="border" unique_id=555191466]
+position = Vector2(153, 545)
+shape = SubResource("RectangleShape2D_tqfvg")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="border" unique_id=1187106098]
+position = Vector2(2261, 582)
+shape = SubResource("RectangleShape2D_tqfvg")
