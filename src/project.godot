@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 SignalBus="*uid://dd1tqqf5825o7"
 GameManager="*uid://c6di1oque3a16"
+SceneManager="*uid://dryutmsmk3uo"
 
 [display]
 

@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://d02h2owjlv6m0" path="res://Scripts/player.gd" id="1_v0iea"]
 [ext_resource type="Texture2D" uid="uid://dnkom7pr14gom" path="res://Assets/beaver/up/Timeline_1_0000.png" id="2_fd4e3"]
 [ext_resource type="Texture2D" uid="uid://bnquvl81ws17j" path="res://Assets/beaver/down/Timeline_1_0000.png" id="2_gymyn"]
+[ext_resource type="Script" uid="uid://vme4vsub1h0j" path="res://Scripts/camera.gd" id="2_l6n3p"]
 [ext_resource type="Texture2D" uid="uid://c678xbq12mfga" path="res://Assets/beaver/side/Timeline_1_0000.png" id="2_x3wgy"]
 [ext_resource type="Texture2D" uid="uid://c6qgj8u3o2t2p" path="res://Assets/beaver/side/Timeline_1_0001.png" id="3_3smsa"]
 [ext_resource type="Texture2D" uid="uid://bth1avh0tt7wx" path="res://Assets/beaver/down/Timeline_1_0001.png" id="3_pu2lt"]
@@ -17,6 +18,9 @@
 [ext_resource type="Texture2D" uid="uid://fh06t87mkjp8" path="res://Assets/beaver/up/Timeline_1_0004.png" id="6_l6n3p"]
 [ext_resource type="Texture2D" uid="uid://bsr6qf30dflt7" path="res://Assets/beaver/side/Timeline_1_0004.png" id="6_tx1dd"]
 [ext_resource type="Texture2D" uid="uid://bvatratpgypw1" path="res://Assets/beaver/water_overlay.png" id="17_qqcod"]
+[ext_resource type="Texture2D" uid="uid://c78bbujq6slor" path="res://Assets/UI/Premade dialog box medium.png" id="18_igrcy"]
+[ext_resource type="FontFile" uid="uid://c4nhkpqxmc352" path="res://Font/RubikWetPaint-Regular.ttf" id="19_fs7ks"]
+[ext_resource type="AudioStream" uid="uid://iowkpfgiekro" path="res://Assets/audio/typewriter (1).mp3" id="21_olqyp"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_tqfvg"]
 animations = [{
@@ -117,6 +121,467 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_fo5ed"]
 radius = 33.13608
 
+[sub_resource type="LabelSettings" id="LabelSettings_olqyp"]
+font = ExtResource("19_fs7ks")
+font_size = 113
+
+[sub_resource type="LabelSettings" id="LabelSettings_wpjfl"]
+font = ExtResource("19_fs7ks")
+
+[sub_resource type="LabelSettings" id="LabelSettings_igrcy"]
+font = ExtResource("19_fs7ks")
+font_color = Color(0.9711272, 0.8626197, 0.79752403, 1)
+outline_size = 2
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Animation" id="Animation_l6n3p"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control/MarginContainer/VBoxContainer/dialogue_ui/MarginContainer/HBoxContainer/MarginContainer/text:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Control/MarginContainer/VBoxContainer/dialogue_ui/MarginContainer/HBoxContainer/MarginContainer/text:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Control/MarginContainer/VBoxContainer/dialogue_ui:custom_minimum_size")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(496.54, 130)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Control/MarginContainer/VBoxContainer/dialogue_ui:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Control/MarginContainer/VBoxContainer/dialogue_ui:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Control:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Control/MarginContainer/VBoxContainer/dialogue_ui/MarginContainer/HBoxContainer/MarginContainer2/TextureRect:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Control/MarginContainer/VBoxContainer/dialogue_ui/MarginContainer/HBoxContainer/MarginContainer2/TextureRect:self_modulate")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("balck_screen:visible")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("balck_screen/ColorRect:visible")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("balck_screen/ColorRect:self_modulate")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("balck_screen/MarginContainer:modulate")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_wpjfl"]
+resource_name = "close_black_screen"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("balck_screen:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("balck_screen/ColorRect:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("balck_screen/ColorRect:self_modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("balck_screen/MarginContainer:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_fs7ks"]
+resource_name = "close_dialogue_box"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control/MarginContainer/VBoxContainer/dialogue_ui/MarginContainer/HBoxContainer/MarginContainer/text:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Control/MarginContainer/VBoxContainer/dialogue_ui/MarginContainer/HBoxContainer/MarginContainer/text:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.13333334),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Control/MarginContainer/VBoxContainer/dialogue_ui:custom_minimum_size")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.4499559),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(496.54, 130), Vector2(20, 130)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Control/MarginContainer/VBoxContainer/dialogue_ui:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Control/MarginContainer/VBoxContainer/dialogue_ui:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.44705883)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Control/MarginContainer/VBoxContainer/dialogue_ui/MarginContainer/HBoxContainer/MarginContainer2/TextureRect:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.13099982),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Control/MarginContainer/VBoxContainer/dialogue_ui/MarginContainer/HBoxContainer/MarginContainer2/TextureRect:self_modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.1025216),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_bi64h"]
+resource_name = "open_black_screen"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("balck_screen:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.099999994),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("balck_screen/ColorRect:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.099999994),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("balck_screen/ColorRect:self_modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("balck_screen/MarginContainer:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_olqyp"]
+resource_name = "open_dialogue_box"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control/MarginContainer/VBoxContainer/dialogue_ui/MarginContainer/HBoxContainer/MarginContainer/text:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.46666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Control/MarginContainer/VBoxContainer/dialogue_ui:custom_minimum_size")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.46666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(20, 130), Vector2(496.54, 130)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Control/MarginContainer/VBoxContainer/dialogue_ui:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Control/MarginContainer/VBoxContainer/dialogue_ui:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.46666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.44705883), Color(1, 1, 1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Control:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Control/MarginContainer/VBoxContainer/dialogue_ui/MarginContainer/HBoxContainer/MarginContainer2/TextureRect:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.46666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Control/MarginContainer/VBoxContainer/dialogue_ui/MarginContainer/HBoxContainer/MarginContainer2/TextureRect:self_modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0.46666667),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Control/MarginContainer/VBoxContainer/dialogue_ui/MarginContainer/HBoxContainer/MarginContainer/text:self_modulate")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0.46666667),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_l6n3p"]
+_data = {
+&"RESET": SubResource("Animation_l6n3p"),
+&"close_black_screen": SubResource("Animation_wpjfl"),
+&"close_dialogue_box": SubResource("Animation_fs7ks"),
+&"open_black_screen": SubResource("Animation_bi64h"),
+&"open_dialogue_box": SubResource("Animation_olqyp")
+}
+
 [node name="Player" type="CharacterBody2D" unique_id=1689520712]
 y_sort_enabled = true
 script = ExtResource("1_v0iea")
@@ -129,19 +594,160 @@ limit_bottom = 1085
 limit_smoothed = true
 position_smoothing_enabled = true
 rotation_smoothing_enabled = true
+script = ExtResource("2_l6n3p")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=695886858]
 y_sort_enabled = true
 position = Vector2(0, -50)
 sprite_frames = SubResource("SpriteFrames_tqfvg")
-animation = &"side_walk"
-frame_progress = 0.37803543
+animation = &"forward_idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=23000687]
 position = Vector2(5, -36)
 shape = SubResource("CircleShape2D_fo5ed")
 
 [node name="water_overlay" type="Sprite2D" parent="." unique_id=951338996]
+visible = false
 position = Vector2(2, -9)
 scale = Vector2(0.8, 1)
 texture = ExtResource("17_qqcod")
+
+[node name="InGame_UI" type="CanvasLayer" parent="." unique_id=1729295156]
+
+[node name="balck_screen" type="Control" parent="InGame_UI" unique_id=1976938742]
+visible = false
+z_index = 10
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="InGame_UI/balck_screen" unique_id=694357879]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="InGame_UI/balck_screen" unique_id=1429538114]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 25
+theme_override_constants/margin_top = 25
+theme_override_constants/margin_right = 25
+theme_override_constants/margin_bottom = 25
+
+[node name="VBoxContainer" type="VBoxContainer" parent="InGame_UI/balck_screen/MarginContainer" unique_id=198283678]
+layout_mode = 2
+
+[node name="title" type="Label" parent="InGame_UI/balck_screen/MarginContainer/VBoxContainer" unique_id=1042178019]
+custom_minimum_size = Vector2(400, 150)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 10
+label_settings = SubResource("LabelSettings_olqyp")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+justification_flags = 162
+
+[node name="description" type="Label" parent="InGame_UI/balck_screen/MarginContainer/VBoxContainer" unique_id=1148140282]
+custom_minimum_size = Vector2(200, 20)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 2
+label_settings = SubResource("LabelSettings_wpjfl")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Control" type="Control" parent="InGame_UI" unique_id=370514667]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="InGame_UI/Control" unique_id=624780582]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 30
+theme_override_constants/margin_right = 30
+theme_override_constants/margin_bottom = 30
+
+[node name="VBoxContainer" type="VBoxContainer" parent="InGame_UI/Control/MarginContainer" unique_id=1395954057]
+layout_mode = 2
+
+[node name="dialogue_ui" type="NinePatchRect" parent="InGame_UI/Control/MarginContainer/VBoxContainer" unique_id=75732495]
+custom_minimum_size = Vector2(496.54, 130)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 10
+texture = ExtResource("18_igrcy")
+
+[node name="MarginContainer" type="MarginContainer" parent="InGame_UI/Control/MarginContainer/VBoxContainer/dialogue_ui" unique_id=1403090126]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="HBoxContainer" type="HBoxContainer" parent="InGame_UI/Control/MarginContainer/VBoxContainer/dialogue_ui/MarginContainer" unique_id=1538014592]
+layout_mode = 2
+
+[node name="MarginContainer2" type="MarginContainer" parent="InGame_UI/Control/MarginContainer/VBoxContainer/dialogue_ui/MarginContainer/HBoxContainer" unique_id=216893294]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = -54
+theme_override_constants/margin_top = 13
+theme_override_constants/margin_right = -15
+theme_override_constants/margin_bottom = 40
+
+[node name="TextureRect" type="TextureRect" parent="InGame_UI/Control/MarginContainer/VBoxContainer/dialogue_ui/MarginContainer/HBoxContainer/MarginContainer2" unique_id=1132317117]
+custom_minimum_size = Vector2(50, 50)
+custom_maximum_size = Vector2(200, 100)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+texture = ExtResource("2_gymyn")
+
+[node name="MarginContainer" type="MarginContainer" parent="InGame_UI/Control/MarginContainer/VBoxContainer/dialogue_ui/MarginContainer/HBoxContainer" unique_id=1507756247]
+layout_mode = 2
+theme_override_constants/margin_left = 2
+theme_override_constants/margin_top = 30
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 11
+
+[node name="text" type="Label" parent="InGame_UI/Control/MarginContainer/VBoxContainer/dialogue_ui/MarginContainer/HBoxContainer/MarginContainer" unique_id=1998874693]
+custom_minimum_size = Vector2(332.935, 65.92)
+layout_mode = 2
+size_flags_horizontal = 10
+label_settings = SubResource("LabelSettings_igrcy")
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="InGame_UI" unique_id=1089372173]
+libraries/ = SubResource("AnimationLibrary_l6n3p")
+
+[node name="typewriter_audio" type="AudioStreamPlayer" parent="InGame_UI" unique_id=1137045244]
+stream = ExtResource("21_olqyp")
+volume_db = 10.0
