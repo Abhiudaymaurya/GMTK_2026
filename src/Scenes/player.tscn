@@ -16,6 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://u5jb7vsv47oh" path="res://Assets/beaver/down/Timeline_1_0004.png" id="6_h4iuc"]
 [ext_resource type="Texture2D" uid="uid://fh06t87mkjp8" path="res://Assets/beaver/up/Timeline_1_0004.png" id="6_l6n3p"]
 [ext_resource type="Texture2D" uid="uid://bsr6qf30dflt7" path="res://Assets/beaver/side/Timeline_1_0004.png" id="6_tx1dd"]
+[ext_resource type="Texture2D" uid="uid://bvatratpgypw1" path="res://Assets/beaver/water_overlay.png" id="17_qqcod"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_tqfvg"]
 animations = [{
@@ -128,8 +129,14 @@ rotation_smoothing_enabled = true
 y_sort_enabled = true
 position = Vector2(0, -50)
 sprite_frames = SubResource("SpriteFrames_tqfvg")
-animation = &"side_idle"
+animation = &"side_walk"
+frame_progress = 0.37803543
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=23000687]
 position = Vector2(5, -36)
 shape = SubResource("CircleShape2D_fo5ed")
+
+[node name="water_overlay" type="Sprite2D" parent="." unique_id=951338996]
+position = Vector2(2, -9)
+scale = Vector2(0.8, 1)
+texture = ExtResource("17_qqcod")
