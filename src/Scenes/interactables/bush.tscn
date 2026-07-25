@@ -1,29 +1,29 @@
-[gd_scene format=3 uid="uid://tlu03qk51453"]
+[gd_scene format=3 uid="uid://bm3a278qwewls"]
 
-[ext_resource type="Script" uid="uid://b6erw2mbrupbh" path="res://Scripts/rock.gd" id="1_lgx4v"]
+[ext_resource type="Script" uid="uid://cdh0r0rgddy2q" path="res://Scripts/interactables/bush.gd" id="1_de378"]
+[ext_resource type="Texture2D" uid="uid://dj4y3ml56dkkb" path="res://icon.svg" id="2_luump"]
 
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_tqfvg"]
-size = Vector2(128, 128)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_1tkky"]
-size = Vector2(128, 128)
+[sub_resource type="CircleShape2D" id="CircleShape2D_vd8au"]
+radius = 54.33231
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tqfvg"]
-size = Vector2(148, 148)
+size = Vector2(186, 184)
 
-[node name="rock" type="StaticBody2D" unique_id=1652929144]
-script = ExtResource("1_lgx4v")
+[node name="bush" type="StaticBody2D" unique_id=1652929144]
+script = ExtResource("1_de378")
 metadata/_custom_type_script = "uid://bhhemxbuevwxu"
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=912964129]
-texture = SubResource("PlaceholderTexture2D_tqfvg")
+texture = ExtResource("2_luump")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1604382433]
-shape = SubResource("RectangleShape2D_1tkky")
+position = Vector2(-2, 14)
+shape = SubResource("CircleShape2D_vd8au")
 
 [node name="DetectionBox" type="Area2D" parent="." unique_id=2116839669]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionBox" unique_id=1609749411]
+position = Vector2(2, 6)
 shape = SubResource("RectangleShape2D_tqfvg")
 
 [connection signal="body_entered" from="DetectionBox" to="." method="_on_detection_box_body_entered"]

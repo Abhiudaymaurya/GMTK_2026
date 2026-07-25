@@ -48,13 +48,6 @@ theme_override_font_sizes/font_size = 32
 text = "cost: "
 horizontal_alignment = 1
 
-[node name="UpgradeButton" type="Button" parent="." unique_id=628588798]
-offset_left = -38.0
-offset_top = -108.0
-offset_right = 35.0
-offset_bottom = -77.0
-text = "upgrade"
-
 [node name="AddWood" type="Button" parent="." unique_id=12459273]
 offset_left = 85.0
 offset_top = -48.0
@@ -69,6 +62,7 @@ offset_right = 167.0
 offset_bottom = 38.0
 text = "add stone"
 
-[connection signal="pressed" from="UpgradeButton" to="." method="_on_button_pressed"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_detection_box_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_detection_box_body_exited"]
 [connection signal="pressed" from="AddWood" to="." method="_on_button_2_pressed"]
 [connection signal="pressed" from="AddStone" to="." method="_on_button_3_pressed"]

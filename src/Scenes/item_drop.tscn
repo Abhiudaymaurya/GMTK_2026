@@ -3,11 +3,14 @@
 [ext_resource type="Script" uid="uid://dyb2g3cnua5vi" path="res://Scripts/item_drop.gd" id="1_qhkgj"]
 [ext_resource type="Texture2D" uid="uid://dj4y3ml56dkkb" path="res://icon.svg" id="2_20isf"]
 
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_0fj1v"]
+size = Vector2(50, 50)
+
 [node name="item_drop" type="Node2D" unique_id=8068003]
 script = ExtResource("1_qhkgj")
 item_drops = Dictionary[int, Texture2D]({
 0: ExtResource("2_20isf"),
-1: null
+1: SubResource("PlaceholderTexture2D_0fj1v")
 })
 
 [node name="sprite" type="Sprite2D" parent="." unique_id=1795853048]
