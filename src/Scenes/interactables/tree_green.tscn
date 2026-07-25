@@ -13,28 +13,28 @@ shader_parameter/wind_strength = 0.2
 shader_parameter/wind_speed = 1.0
 shader_parameter/scale = 2.0
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_vd8au"]
-radius = 60.00833
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s488w"]
+size = Vector2(68, 15)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tqfvg"]
 size = Vector2(173, 142)
 
 [node name="tree" type="StaticBody2D" unique_id=1652929144]
-z_index = 5
 script = ExtResource("1_s488w")
 metadata/_custom_type_script = "uid://bhhemxbuevwxu"
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=912964129]
 material = SubResource("ShaderMaterial_e0ngr")
-position = Vector2(22, -147)
+position = Vector2(22.236954, -168.66666)
 scale = Vector2(0.5339426, 0.5885417)
 texture = ExtResource("3_s488w")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1604382433]
-position = Vector2(-2, 30)
-shape = SubResource("CircleShape2D_vd8au")
+position = Vector2(0.23695374, 1.5)
+shape = SubResource("RectangleShape2D_s488w")
 
 [node name="DetectionBox" type="Area2D" parent="." unique_id=2116839669]
+position = Vector2(0.23695374, -21.666656)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionBox" unique_id=1609749411]
 position = Vector2(4.5, 21)

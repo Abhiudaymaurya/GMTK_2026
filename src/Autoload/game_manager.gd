@@ -81,12 +81,6 @@ func inv_has_item(item: Item, amount: int = 1) -> bool:
 
 # basic cutscene
 
-func basic_cutscene(camera: Camera2D, dialogue_ui: Control, texture_rect: TextureRect, text_label: Label , animation_player : AnimationPlayer , typewriter_audio : AudioStreamPlayer ,title,description):
-	if development_mode:
-		animation_player.play("close_dialogue_box")
-		return;
-
-
 func basic_cutscene(
 		camera: Camera2D,
 		dialogue_ui: Control,
@@ -97,6 +91,10 @@ func basic_cutscene(
 		title_ref: Label,
 		description_ref: Label
 ) -> void:
+	if development_mode:
+			animation_player_ref.play("close_dialogue_box")
+			return ;
+
 	animation_player = animation_player_ref
 	typewriter_audio = typewriter_audio_ref
 	title = title_ref
@@ -128,18 +126,18 @@ func basic_cutscene(
 
 # show_dialogue function
 
-func show_dialogue(texture_rect: TextureRect, text_label: Label, image: Texture2D, message: String, camera: Camera2D, typewriter_audio: AudioStreamPlayer):
+func show_dialogue(texture_rect: TextureRect, text_label: Label, image: Texture2D, message: String, camera: Camera2D, typewriter_audio_ref: AudioStreamPlayer):
 	texture_rect.texture = image;
 	text_label.text = "";
 
-	typewriter_audio.play();
+	typewriter_audio_ref.play();
 
 	for c in message:
 		text_label.text += c
 		await get_tree().create_timer(dialogue_speed).timeout
 
 	# Wait for player input before next dialogue
-	typewriter_audio.stop();
+	typewriter_audio_ref.stop();
 	await wait_for_continue(camera)
 
 
@@ -189,10 +187,11 @@ func black_screen(
 func _on_day_change(new_day: int) -> void:
 	is_player_movement_freeze = true
 
-	await black_screen(title, description, animation_player, typewriter_audio,
-		str(7 - new_day) + " DAYS " + "LEFT",
-		"Another day has passed."
-	)
+	if dam_health > 0:
+		await black_screen(title, description, animation_player, typewriter_audio,
+			str(7 - new_day) + " DAYS " + "LEFT",
+			"Another day has passed."
+		)
 
 
 	if new_day == 7:
