@@ -6,6 +6,8 @@ var time: float
 var day: int
 var is_day_started: bool
 
+var is_game_end: bool = false
+
 # Store references so other functions can use them
 var title: Label
 var description: Label
@@ -123,7 +125,7 @@ func basic_cutscene(
 	tween.parallel().tween_property(camera, "offset", Vector2(0, 0), 2.0)
 
 	await tween.finished;
-	black_screen(title, description, animation_player, typewriter_audio, "7 DAY LEFt", "The countdown begins.")
+	black_screen(title, description, animation_player, typewriter_audio, "7 DAY LEFt", "The countdown begins.", is_game_end)
 
 # show_dialogue function
 
@@ -157,7 +159,8 @@ func black_screen(
 	animation_player_ref: AnimationPlayer,
 	typewriter_audio_ref: AudioStreamPlayer,
 	screen_title: String,
-	screen_des: String
+	screen_des: String,
+	keep_black: bool
 ):
 	animation_player_ref.play("open_black_screen")
 	await animation_player_ref.animation_finished
@@ -179,12 +182,13 @@ func black_screen(
 	typewriter_audio_ref.stop();
 	# Let the player read the text
 	await get_tree().create_timer(3.5).timeout
-
-	animation_player_ref.play("close_black_screen")
-	await animation_player_ref.animation_finished
-	is_player_movement_freeze = false;
-	is_day_started = true
-	SignalBus.day_started.emit()
+	
+	if not keep_black:
+		animation_player_ref.play("close_black_screen")
+		await animation_player_ref.animation_finished
+		is_player_movement_freeze = false;
+		is_day_started = true
+		SignalBus.day_started.emit()
 
 func _on_day_change(new_day: int) -> void:
 	is_player_movement_freeze = true
@@ -192,7 +196,7 @@ func _on_day_change(new_day: int) -> void:
 
 	await black_screen(title, description, animation_player, typewriter_audio,
 		str(7 - new_day) + " DAYS " + "LEFT",
-			"Another day has passed."
+			"Another day has passed.", is_game_end
 	)
 
 
@@ -211,32 +215,37 @@ func game_evaluation() -> String:
 
 func game_over(state: String) -> void:
 	is_player_movement_freeze = true
+	is_game_end = true
 
 	match state:
 		"STARVED":
 			await black_screen(
 				title, description, animation_player, typewriter_audio,
 				"STARVED",
-				"You did not gather enough food to survive the winter."
+				"You did not gather enough food to survive the winter.",
+				is_game_end
 			)
 
 		"FLOODED":
 			await black_screen(
 				title, description, animation_player, typewriter_audio,
 				"FLOODED",
-				"Your dam could not withstand the winter."
+				"Your dam could not withstand the winter.",
+				is_game_end
 			)
 
 		"FROZEN":
 			await black_screen(
 				title, description, animation_player, typewriter_audio,
 				"FROZEN",
-				"Your lodge was not prepared for the freezing winter."
+				"Your lodge was not prepared for the freezing winter.",
+				is_game_end
 			)
 
 		"SURVIVED":
 			await black_screen(
 				title, description, animation_player, typewriter_audio,
 				"SURVIVED",
-				"You prepared well and survived the winter."
+				"You prepared well and survived the winter.",
+				is_game_end
 			)

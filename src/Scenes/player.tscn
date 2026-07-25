@@ -123,7 +123,7 @@ radius = 33.13608
 
 [sub_resource type="LabelSettings" id="LabelSettings_olqyp"]
 font = ExtResource("19_fs7ks")
-font_size = 113
+font_size = 115
 
 [sub_resource type="LabelSettings" id="LabelSettings_wpjfl"]
 font = ExtResource("19_fs7ks")
@@ -587,6 +587,11 @@ y_sort_enabled = true
 script = ExtResource("1_v0iea")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1852453049]
+limit_left = -910
+limit_top = -600
+limit_right = 1200
+limit_bottom = 525
+limit_smoothed = true
 position_smoothing_enabled = true
 rotation_smoothing_enabled = true
 script = ExtResource("2_l6n3p")
@@ -644,7 +649,7 @@ theme_override_constants/margin_bottom = 25
 layout_mode = 2
 
 [node name="title" type="Label" parent="InGame_UI/balck_screen/MarginContainer/VBoxContainer" unique_id=1042178019]
-custom_minimum_size = Vector2(400, 150)
+custom_minimum_size = Vector2(600, 300)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 10
