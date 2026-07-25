@@ -8,7 +8,7 @@
 [ext_resource type="Shader" uid="uid://0dho0d1p36d0" path="res://Scripts/shader/simple_river_shader_.gdshader" id="4_o06y3"]
 [ext_resource type="Texture2D" uid="uid://dlmn44s3vu6yg" path="res://Assets/river_shader_asset/water_normal_texture.jpg" id="5_5v1tr"]
 [ext_resource type="Texture2D" uid="uid://marcger4sg7g" path="res://Assets/river_shader_asset/water_noise_texture.jpg" id="6_0fj1v"]
-[ext_resource type="PackedScene" uid="uid://tlu03qk51453" path="res://Scenes/rock.tscn" id="6_5ukr8"]
+[ext_resource type="PackedScene" uid="uid://tlu03qk51453" path="res://Scenes/interactables/rock.tscn" id="6_5ukr8"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_k7acu"]
 texture = ExtResource("1_5ukr8")

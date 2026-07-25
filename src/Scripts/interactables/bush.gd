@@ -10,12 +10,12 @@ var current_step: int = 0
 func _ready() -> void:
 	super._ready()
 
-	drop_item = GameManager.Item.STONE
+	drop_item = GameManager.Item.FOOD
 	drop_amount = amount
 
 
 func interact() -> void:
-	if not can_progress_step:
+	if (not can_progress_step) or (not can_drop):
 		return
 
 	can_progress_step = false
@@ -29,12 +29,11 @@ func interact() -> void:
 func drop() -> void:
 	super.drop()
 
-	call_deferred("queue_free")
-
 func _process_break_step() -> void:
 	_play_break_visual()
 
 	if current_step >= steps_to_break:
+		current_step = 0
 		drop()
 
 func _play_break_visual() -> void:

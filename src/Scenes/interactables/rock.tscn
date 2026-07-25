@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://tlu03qk51453"]
+
+[ext_resource type="Script" uid="uid://b6erw2mbrupbh" path="res://Scripts/interactables/rock.gd" id="1_lgx4v"]
+[ext_resource type="Texture2D" uid="uid://c0rk3yc21s10o" path="res://Assets/bigrock.png" id="2_5mkji"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vd8au"]
+radius = 54.33231
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tqfvg"]
+size = Vector2(186, 184)
+
+[node name="rock" type="StaticBody2D" unique_id=1652929144]
+script = ExtResource("1_lgx4v")
+metadata/_custom_type_script = "uid://bhhemxbuevwxu"
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=912964129]
+texture = ExtResource("2_5mkji")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1604382433]
+position = Vector2(-2, 14)
+shape = SubResource("CircleShape2D_vd8au")
+
+[node name="DetectionBox" type="Area2D" parent="." unique_id=2116839669]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionBox" unique_id=1609749411]
+position = Vector2(2, 6)
+shape = SubResource("RectangleShape2D_tqfvg")
+
+[connection signal="body_entered" from="DetectionBox" to="." method="_on_detection_box_body_entered"]
+[connection signal="body_exited" from="DetectionBox" to="." method="_on_detection_box_body_exited"]
