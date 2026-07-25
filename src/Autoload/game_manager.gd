@@ -4,6 +4,7 @@ var development_mode = false;
 
 var time: float
 var day: int
+var is_day_started: bool
 
 # Store references so other functions can use them
 var title: Label
@@ -182,16 +183,17 @@ func black_screen(
 	animation_player_ref.play("close_black_screen")
 	await animation_player_ref.animation_finished
 	is_player_movement_freeze = false;
-
+	is_day_started = true
+	SignalBus.day_started.emit()
 
 func _on_day_change(new_day: int) -> void:
 	is_player_movement_freeze = true
+	is_day_started = false
 
-	if dam_health > 0:
-		await black_screen(title, description, animation_player, typewriter_audio,
-			str(7 - new_day) + " DAYS " + "LEFT",
+	await black_screen(title, description, animation_player, typewriter_audio,
+		str(7 - new_day) + " DAYS " + "LEFT",
 			"Another day has passed."
-		)
+	)
 
 
 	if new_day == 7:

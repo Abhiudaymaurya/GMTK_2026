@@ -88,6 +88,11 @@ func destroy_dam() -> void:
 	GameManager.dam_health = 0
 
 	# - Trigger game over
+	if not GameManager.is_day_started:
+		await SignalBus.day_started
+	
+	await get_tree().create_timer(0.5).timeout
+
 	GameManager.game_over("FLOODED")
 
 func get_health() -> int:

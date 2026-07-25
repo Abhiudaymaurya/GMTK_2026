@@ -11,5 +11,6 @@ signal context_update(interactable, entered: bool)
 
 # day count
 signal day_changed(day: int)
+signal day_started()
 
 @warning_ignore_restore("unused_signal")

@@ -1255,7 +1255,7 @@ amount = 4
 steps_to_break = 6
 
 [node name="rock6" parent="resources/rocks" unique_id=1315428139 instance=ExtResource("6_5ukr8")]
-position = Vector2(1808, 1041)
+position = Vector2(1816, 1059)
 scale = Vector2(1, 1)
 amount = 5
 steps_to_break = 6
