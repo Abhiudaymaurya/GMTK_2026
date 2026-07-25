@@ -1,5 +1,7 @@
 extends Node
 
+var development_mode = false;
+
 var time: float
 var day: int
 
@@ -72,6 +74,10 @@ func inv_has_item(item: Item, amount: int = 1) -> bool:
 # basic cutscene
 
 func basic_cutscene(camera: Camera2D, dialogue_ui: Control, texture_rect: TextureRect, text_label: Label , animation_player : AnimationPlayer , typewriter_audio : AudioStreamPlayer ,title,description):
+	if development_mode:
+		animation_player.play("close_dialogue_box")
+		return;
+	
 	is_player_movement_freeze = true;
 	dialogue_ui.visible = false;
 

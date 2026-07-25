@@ -10,8 +10,8 @@ config_version=5
 
 [application]
 
-config/name="GMTK_2026"
-run/main_scene="uid://cb60fs5k1qmjc"
+config/name="GMTK_2026 -current -desktop -github"
+run/main_scene="uid://blmhjl51p1h1a"
 config/features=PackedStringArray("4.7", "Forward Plus")
 config/icon="res://icon.svg"
 

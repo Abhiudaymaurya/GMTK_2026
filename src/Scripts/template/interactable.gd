@@ -14,7 +14,7 @@ func _ready() -> void:
 	SignalBus.day_changed.connect(_on_day_changed)
 
 
-func _on_day_changed(day: int) -> void:
+func _on_day_changed(_day: int) -> void:
 	can_drop = true
 
 func _on_detection_box_body_exited(body: Node2D) -> void:

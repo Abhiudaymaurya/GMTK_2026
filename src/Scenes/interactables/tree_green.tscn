@@ -1,43 +1,43 @@
-[gd_scene format=3 uid="uid://efdkj5m5w06l"]
+[gd_scene format=3 uid="uid://ci5qimggxalsj"]
 
-[ext_resource type="Script" uid="uid://baon2b4aet5qv" path="res://Scripts/interactables/tree.gd" id="1_0vwjc"]
-[ext_resource type="Texture2D" uid="uid://bo0mox7yhnyon" path="res://Assets/bigtree.png" id="2_hd23w"]
-[ext_resource type="Shader" uid="uid://sb67vt5twqhi" path="res://Scripts/shader/tree_wind_sway.gdshader" id="2_tsc5a"]
+[ext_resource type="Script" uid="uid://baon2b4aet5qv" path="res://Scripts/interactables/tree.gd" id="1_s488w"]
+[ext_resource type="Shader" uid="uid://sb67vt5twqhi" path="res://Scripts/shader/tree_wind_sway.gdshader" id="2_yg7hb"]
+[ext_resource type="Texture2D" uid="uid://cdkt8i86mdobk" path="res://Assets/tree.png" id="3_s488w"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_tsc5a"]
-shader = ExtResource("2_tsc5a")
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_e0ngr"]
+shader = ExtResource("2_yg7hb")
 shader_parameter/wind_start_threshold = 0.1
 shader_parameter/wind_end_threshold = 2.0
 shader_parameter/wind_end_threshold_2 = 0.1
-shader_parameter/wind_strength = 0.090000004275
+shader_parameter/wind_strength = 0.2
 shader_parameter/wind_speed = 1.0
 shader_parameter/scale = 2.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_vd8au"]
-radius = 34.058773
+radius = 60.00833
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tqfvg"]
-size = Vector2(113, 112)
+size = Vector2(173, 142)
 
 [node name="tree" type="StaticBody2D" unique_id=1652929144]
 z_index = 5
-script = ExtResource("1_0vwjc")
+script = ExtResource("1_s488w")
 metadata/_custom_type_script = "uid://bhhemxbuevwxu"
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=912964129]
-material = SubResource("ShaderMaterial_tsc5a")
-position = Vector2(-1, -122)
+material = SubResource("ShaderMaterial_e0ngr")
+position = Vector2(22, -147)
 scale = Vector2(0.5339426, 0.5885417)
-texture = ExtResource("2_hd23w")
+texture = ExtResource("3_s488w")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1604382433]
-position = Vector2(-2, 14)
+position = Vector2(-2, 30)
 shape = SubResource("CircleShape2D_vd8au")
 
 [node name="DetectionBox" type="Area2D" parent="." unique_id=2116839669]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionBox" unique_id=1609749411]
-position = Vector2(1.5, 6)
+position = Vector2(4.5, 21)
 shape = SubResource("RectangleShape2D_tqfvg")
 
 [connection signal="body_entered" from="DetectionBox" to="." method="_on_detection_box_body_entered"]

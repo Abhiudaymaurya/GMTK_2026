@@ -1,16 +1,33 @@
 [gd_scene format=3 uid="uid://blmhjl51p1h1a"]
 
+[ext_resource type="Script" uid="uid://ck405jbi12v41" path="res://Scripts/main_menu.gd" id="1_8um5k"]
 [ext_resource type="FontFile" uid="uid://c4nhkpqxmc352" path="res://Font/RubikWetPaint-Regular.ttf" id="1_tt5f1"]
+[ext_resource type="Texture2D" uid="uid://dyyeou8unvh7i" path="res://Assets/UI/background.png" id="2_853f1"]
+[ext_resource type="FontFile" uid="uid://beuioh8s6koim" path="res://Font/FORESTANA.ttf" id="2_df05h"]
+[ext_resource type="Texture2D" uid="uid://sk6uq2rgcu3x" path="res://Assets/UI/buttonmenu.png" id="3_8saeu"]
+[ext_resource type="Texture2D" uid="uid://bwkk7662u1rq4" path="res://Assets/UI/Sprite sheet for Basic Pack.png" id="4_ghw46"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_aqgdg"]
-font = ExtResource("1_tt5f1")
-font_size = 78
+font = ExtResource("2_df05h")
+font_size = 108
 font_color = Color(0.9019608, 0.49411765, 0.13333334, 1)
 outline_size = 29
 outline_color = Color(1, 0.9647059, 0.8352941, 1)
 shadow_size = 45
 shadow_color = Color(0.06666667, 0.06666667, 0.06666667, 1)
 shadow_offset = Vector2(3.77, 6.695)
+
+[sub_resource type="LabelSettings" id="LabelSettings_ghw46"]
+font = ExtResource("1_tt5f1")
+font_size = 30
+font_color = Color(0.7647059, 0.6039216, 0.43137255, 1)
+outline_size = 5
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_8um5k"]
+font = ExtResource("2_df05h")
+font_size = 28
+font_color = Color(0.7647059, 0.6039216, 0.42745098, 1)
 
 [node name="MainMenu" type="Control" unique_id=1317505310]
 layout_mode = 3
@@ -19,19 +36,147 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_8um5k")
 
-[node name="Label" type="Label" parent="." unique_id=893264532]
-custom_minimum_size = Vector2(100, 100)
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1844067372]
+z_index = -5
 layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.25694445
-anchor_top = 0.11265432
-anchor_right = 0.7881944
-anchor_bottom = 0.40432104
-offset_bottom = -3.0517578e-05
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -4.777832
+offset_top = -2.0
+offset_right = -3.0
+offset_bottom = -1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_853f1")
+expand_mode = 3
+flip_h = true
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=807597921]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 70
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=1595842662]
+layout_mode = 2
+
+[node name="title" type="Label" parent="MarginContainer/VBoxContainer" unique_id=893264532]
+z_index = 5
+custom_minimum_size = Vector2(650, 100)
+layout_mode = 2
+size_flags_horizontal = 4
 text = "Countdown to Spring"
 label_settings = SubResource("LabelSettings_aqgdg")
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
 metadata/_edit_use_anchors_ = true
+
+[node name="NinePatchRect" type="NinePatchRect" parent="MarginContainer/VBoxContainer" unique_id=1612839660]
+z_index = 5
+custom_minimum_size = Vector2(600, 400)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("3_8saeu")
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/NinePatchRect" unique_id=1905248007]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_top = 38
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/NinePatchRect/MarginContainer" unique_id=1680129070]
+custom_minimum_size = Vector2(100, 10)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+text = "MENU"
+label_settings = SubResource("LabelSettings_ghw46")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+autowrap_trim_flags = 128
+
+[node name="MarginContainer2" type="MarginContainer" parent="MarginContainer/VBoxContainer/NinePatchRect" unique_id=1934806337]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 16.0
+offset_bottom = 10.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 80
+theme_override_constants/margin_top = 116
+theme_override_constants/margin_right = 80
+theme_override_constants/margin_bottom = 80
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/NinePatchRect/MarginContainer2" unique_id=1355591928]
+layout_mode = 2
+theme_override_constants/separation = -69
+
+[node name="play_button_holder" type="NinePatchRect" parent="MarginContainer/VBoxContainer/NinePatchRect/MarginContainer2/VBoxContainer" unique_id=103231037]
+custom_minimum_size = Vector2(150, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 2
+texture = ExtResource("4_ghw46")
+region_rect = Rect2(163, 209, 90, 29)
+
+[node name="play_button" type="Button" parent="MarginContainer/VBoxContainer/NinePatchRect/MarginContainer2/VBoxContainer/play_button_holder" unique_id=1115383946]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+flat = true
+
+[node name="exit_button_holder" type="NinePatchRect" parent="MarginContainer/VBoxContainer/NinePatchRect/MarginContainer2/VBoxContainer" unique_id=28295534]
+custom_minimum_size = Vector2(150, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 2
+texture = ExtResource("4_ghw46")
+region_rect = Rect2(161, 177, 93, 31)
+
+[node name="exit_button" type="Button" parent="MarginContainer/VBoxContainer/NinePatchRect/MarginContainer2/VBoxContainer/exit_button_holder" unique_id=482164191]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+flat = true
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/NinePatchRect/MarginContainer2/VBoxContainer/exit_button_holder" unique_id=1000563747]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.17
+anchor_right = 1.0
+anchor_bottom = 0.79
+grow_horizontal = 2
+grow_vertical = 2
+text = "EXIT"
+label_settings = SubResource("LabelSettings_8um5k")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+metadata/_edit_use_anchors_ = true
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/NinePatchRect/MarginContainer2/VBoxContainer/play_button_holder/play_button" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/NinePatchRect/MarginContainer2/VBoxContainer/exit_button_holder/exit_button" to="." method="_on_exit_button_pressed"]
