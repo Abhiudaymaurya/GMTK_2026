@@ -1,11 +1,12 @@
 extends Node2D
 
-var max_tier: int = 2
+var max_tier: int = 3
 
 var upgrade_costs := [
 	{},
 	{GameManager.Item.WOOD: 10, GameManager.Item.STONE: 5},
 	{GameManager.Item.WOOD: 20, GameManager.Item.STONE: 10},
+	{GameManager.Item.WOOD: 25, GameManager.Item.STONE: 20},
 ]
 
 func _process(_delta: float) -> void:

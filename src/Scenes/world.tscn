@@ -1137,6 +1137,7 @@ position = Vector2(194, 250)
 
 [node name="day-night" parent="." unique_id=140441352 instance=ExtResource("3_5a7ea")]
 day_length_in_minutes = 0.5
+initial_hour = 0.0
 
 [node name="resources" type="Node2D" parent="." unique_id=921875877]
 

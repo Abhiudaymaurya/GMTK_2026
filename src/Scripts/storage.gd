@@ -1,7 +1,7 @@
 extends Area2D
 
-@export var base_storage_capacity: int = 5
-@export var storage_capacity_per_tier: int = 5
+@export var base_storage_capacity: int = 25
+@export var storage_capacity_per_tier: int = 20
 
 var lodge_tier: int = 0
 

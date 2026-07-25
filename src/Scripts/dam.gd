@@ -3,7 +3,7 @@ class_name Dam
 
 @export var max_health: int = 100
 @export var starting_health: int = 100
-@export var health_loss_per_day: int = 15
+@export var health_loss_per_day: int = 25
 
 @export var repair_amount: int = 25
 @export var cost_exponent: float = 2.0
