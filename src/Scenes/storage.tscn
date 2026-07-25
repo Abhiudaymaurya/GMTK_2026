@@ -17,5 +17,13 @@ texture = SubResource("PlaceholderTexture2D_tqfvg")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=519968775]
 shape = SubResource("RectangleShape2D_tqfvg")
 
+[node name="LodgeLabel" type="Label" parent="." unique_id=265495901]
+offset_left = -46.0
+offset_top = -24.0
+offset_right = 39.0
+offset_bottom = 21.0
+theme_override_font_sizes/font_size = 24
+text = "STORAGE"
+
 [connection signal="body_entered" from="." to="." method="_on_detection_box_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_detection_box_body_exited"]

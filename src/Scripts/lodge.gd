@@ -12,10 +12,8 @@ func _process(_delta: float) -> void:
 	$resources.text = str("resources: ", GameManager.player_inventory)
 
 	if GameManager.lodge_tier >= max_tier:
-		$UpgradeButton.disabled = true
 		$cost.text = "MAXED LVL"
 	else:
-		$UpgradeButton.disabled = false
 		$cost.text = str("cost: ", upgrade_costs[GameManager.lodge_tier + 1])
 
 

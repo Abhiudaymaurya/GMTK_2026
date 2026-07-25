@@ -1,30 +1,41 @@
 [gd_scene format=3 uid="uid://bm3a278qwewls"]
 
 [ext_resource type="Script" uid="uid://cdh0r0rgddy2q" path="res://Scripts/interactables/bush.gd" id="1_de378"]
-[ext_resource type="Texture2D" uid="uid://dj4y3ml56dkkb" path="res://icon.svg" id="2_luump"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_tihfx"]
+size = Vector2(64, 64)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_vd8au"]
-radius = 54.33231
+radius = 29.427877
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tqfvg"]
-size = Vector2(186, 184)
+size = Vector2(89, 95)
 
 [node name="bush" type="StaticBody2D" unique_id=1652929144]
 script = ExtResource("1_de378")
 metadata/_custom_type_script = "uid://bhhemxbuevwxu"
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=912964129]
-texture = ExtResource("2_luump")
+texture = SubResource("PlaceholderTexture2D_tihfx")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1604382433]
 position = Vector2(-2, 14)
 shape = SubResource("CircleShape2D_vd8au")
+disabled = true
 
 [node name="DetectionBox" type="Area2D" parent="." unique_id=2116839669]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionBox" unique_id=1609749411]
-position = Vector2(2, 6)
+position = Vector2(0.5, 0.5)
 shape = SubResource("RectangleShape2D_tqfvg")
+
+[node name="LodgeLabel" type="Label" parent="." unique_id=224925798]
+offset_left = -46.0
+offset_top = -24.0
+offset_right = 39.0
+offset_bottom = 21.0
+theme_override_font_sizes/font_size = 32
+text = "BUSH"
 
 [connection signal="body_entered" from="DetectionBox" to="." method="_on_detection_box_body_entered"]
 [connection signal="body_exited" from="DetectionBox" to="." method="_on_detection_box_body_exited"]

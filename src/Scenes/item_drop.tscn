@@ -6,11 +6,15 @@
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_0fj1v"]
 size = Vector2(50, 50)
 
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_kn0ld"]
+size = Vector2(30, 30)
+
 [node name="item_drop" type="Node2D" unique_id=8068003]
 script = ExtResource("1_qhkgj")
 item_drops = Dictionary[int, Texture2D]({
 0: ExtResource("2_20isf"),
-1: SubResource("PlaceholderTexture2D_0fj1v")
+1: SubResource("PlaceholderTexture2D_0fj1v"),
+2: SubResource("PlaceholderTexture2D_kn0ld")
 })
 
 [node name="sprite" type="Sprite2D" parent="." unique_id=1795853048]

@@ -1,20 +1,19 @@
 [gd_scene format=3 uid="uid://cv0y8il3i1mtl"]
 
 [ext_resource type="Script" uid="uid://1synkxl7if5l" path="res://Scripts/dam.gd" id="1_mjnke"]
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_tqfvg"]
-size = Vector2(128, 128)
+[ext_resource type="Texture2D" uid="uid://cvuaoyv0se0um" path="res://Assets/dam.png" id="2_t7yid"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tqfvg"]
-size = Vector2(128, 128)
+size = Vector2(128, 234)
 
 [node name="Dam" type="Area2D" unique_id=435384367]
 script = ExtResource("1_mjnke")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=369770707]
-texture = SubResource("PlaceholderTexture2D_tqfvg")
+texture = ExtResource("2_t7yid")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=519968775]
+position = Vector2(0, -3)
 shape = SubResource("RectangleShape2D_tqfvg")
 
 [connection signal="body_entered" from="." to="." method="_on_detection_box_body_entered"]
