@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 const NORMAL_SPEED: float = 300.0 * 50.0
-const WATER_SPEED: float = 300.0 * 35.0
+const WATER_SPEED: float = 300.0 * 60.0
 
 var speed: float = NORMAL_SPEED
 
@@ -34,7 +34,7 @@ func _ready() -> void:
 	SignalBus.context_update.connect(_on_context_update);
 	
 	GameManager.basic_cutscene(
-		camera_2d,control,
+		camera_2d, control,
 		texture_rect,
 		text,
 		animation_player,
@@ -55,7 +55,7 @@ func _unhandled_input(event: InputEvent) -> void:
 
 func _physics_process(delta: float) -> void:
 	if GameManager.is_player_movement_freeze:
-		return;
+		return ;
 		
 	var direction := Input.get_vector("move_left", "move_right", "move_up", "move_down").normalized()
 
