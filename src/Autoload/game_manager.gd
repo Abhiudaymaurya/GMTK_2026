@@ -3,11 +3,14 @@ extends Node
 var time: float
 var day: int
 
+var lodge_tier: int = 0
+var stored_food: int = 0
+var dam_health: int
+
 enum Item {
 	WOOD,
 	STONE,
-	FOOD,
-	WATER
+	FOOD
 }
 
 var player_inventory: Dictionary[Item, int] = {}
