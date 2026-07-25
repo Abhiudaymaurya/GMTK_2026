@@ -15,7 +15,6 @@ func _ready() -> void:
 
 
 func _on_day_changed(day: int) -> void:
-	print("Day changed to: ", day)
 	can_drop = true
 
 func _on_detection_box_body_exited(body: Node2D) -> void:

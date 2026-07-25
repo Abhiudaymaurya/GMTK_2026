@@ -122,6 +122,11 @@ y_sort_enabled = true
 script = ExtResource("1_v0iea")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1852453049]
+limit_left = -64
+limit_top = -32
+limit_right = 2042
+limit_bottom = 1085
+limit_smoothed = true
 position_smoothing_enabled = true
 rotation_smoothing_enabled = true
 
