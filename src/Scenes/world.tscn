@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://tlu03qk51453" path="res://Scenes/interactables/rock.tscn" id="6_5ukr8"]
 [ext_resource type="PackedScene" uid="uid://cv0y8il3i1mtl" path="res://Scenes/dam.tscn" id="10_0fj1v"]
 [ext_resource type="PackedScene" uid="uid://efdkj5m5w06l" path="res://Scenes/interactables/tree.tscn" id="10_c5t2i"]
+[ext_resource type="PackedScene" uid="uid://ci5qimggxalsj" path="res://Scenes/interactables/tree_green.tscn" id="10_kn0ld"]
 [ext_resource type="PackedScene" uid="uid://bm3a278qwewls" path="res://Scenes/interactables/bush.tscn" id="11_e0ngr"]
 [ext_resource type="PackedScene" uid="uid://ctsqu7r3hgdhl" path="res://Scenes/lodge.tscn" id="11_ikia7"]
 [ext_resource type="PackedScene" uid="uid://dqti48ik3hujf" path="res://Scenes/storage.tscn" id="12_7yui6"]
@@ -1143,21 +1144,20 @@ initial_hour = 0.0
 
 [node name="trees" type="Node2D" parent="resources" unique_id=683668217]
 
-[node name="tree" parent="resources/trees" unique_id=722207893 instance=ExtResource("10_c5t2i")]
-position = Vector2(0, 106)
-steps_to_break = 2
+[node name="tree8" parent="resources/trees" unique_id=1652929144 instance=ExtResource("10_kn0ld")]
+position = Vector2(31, 75)
 
-[node name="tree2" parent="resources/trees" unique_id=1652929144 instance=ExtResource("10_c5t2i")]
-position = Vector2(-7, 399)
-steps_to_break = 2
+[node name="tree12" parent="resources/trees" unique_id=910750412 instance=ExtResource("10_kn0ld")]
+position = Vector2(18, 311)
 
-[node name="tree3" parent="resources/trees" unique_id=10539643 instance=ExtResource("10_c5t2i")]
-position = Vector2(308, 103)
-amount = 2
-steps_to_break = 3
+[node name="tree14" parent="resources/trees" unique_id=759115283 instance=ExtResource("10_kn0ld")]
+position = Vector2(1302, 597)
+
+[node name="tree11" parent="resources/trees" unique_id=821110176 instance=ExtResource("10_kn0ld")]
+position = Vector2(295, 75)
 
 [node name="tree4" parent="resources/trees" unique_id=1997870476 instance=ExtResource("10_c5t2i")]
-position = Vector2(358, 279)
+position = Vector2(430, 1023)
 amount = 2
 steps_to_break = 3
 
@@ -1171,20 +1171,18 @@ position = Vector2(775, 933)
 amount = 3
 steps_to_break = 3
 
-[node name="tree9" parent="resources/trees" unique_id=92933732 instance=ExtResource("10_c5t2i")]
-position = Vector2(1264, 639)
-amount = 3
-steps_to_break = 3
-
 [node name="tree7" parent="resources/trees" unique_id=1595145714 instance=ExtResource("10_c5t2i")]
-position = Vector2(73, 1011)
+position = Vector2(1937, 763)
 amount = 3
 steps_to_break = 3
 
-[node name="tree8" parent="resources/trees" unique_id=1451651204 instance=ExtResource("10_c5t2i")]
-position = Vector2(1862, 723)
-amount = 5
-steps_to_break = 6
+[node name="tree13" parent="resources/trees" unique_id=1164512228 instance=ExtResource("10_c5t2i")]
+position = Vector2(1642, 91)
+amount = 3
+steps_to_break = 3
+
+[node name="tree10" parent="resources/trees" unique_id=1006788943 instance=ExtResource("10_kn0ld")]
+position = Vector2(49, 1008)
 
 [node name="rocks" type="Node2D" parent="resources" unique_id=2002614127]
 
@@ -1258,7 +1256,7 @@ steps_to_break = 6
 position = Vector2(410, 202)
 
 [node name="bush2" parent="resources/bushs" unique_id=939014884 instance=ExtResource("11_e0ngr")]
-position = Vector2(59, 340)
+position = Vector2(-1, 475)
 
 [node name="bush3" parent="resources/bushs" unique_id=1733056646 instance=ExtResource("11_e0ngr")]
 position = Vector2(151, 526)

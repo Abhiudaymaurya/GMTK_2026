@@ -48,6 +48,7 @@ func interact() -> void:
 	try_upgrade()
 
 func _on_button_2_pressed() -> void:
+	print("added")
 	GameManager.inv_add_item(GameManager.Item.WOOD, 1)
 
 func _on_button_3_pressed() -> void:
