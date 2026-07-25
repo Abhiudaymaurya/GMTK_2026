@@ -1127,6 +1127,7 @@ tile_map_data = PackedByteArray("AAD+/xEAAgADAAAAAAD//xEAAgABAAIAAAAAABEAAgABAAI
 tile_set = SubResource("TileSet_a8ku5")
 
 [node name="Player" parent="." unique_id=1689520712 instance=ExtResource("1_a02cp")]
+position = Vector2(342, 164)
 
 [node name="day-night" parent="." unique_id=140441352 instance=ExtResource("3_5a7ea")]
 visible = false

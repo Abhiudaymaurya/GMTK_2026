@@ -5,20 +5,48 @@ const WATER_SPEED: float = 300.0 * 35.0
 
 var speed: float = NORMAL_SPEED
 
+
 @onready var river_tile_map = $"../terrain_layers/river-water"
 @onready var water_overlay: Sprite2D = $"water_overlay"
+@onready var camera_2d: Camera2D = $Camera2D
+
+#INGame_UI - control node
+@onready var control: Control = $InGame_UI/Control
+#INGame_UI - text node
+@onready var text: Label = $InGame_UI/Control/MarginContainer/VBoxContainer/dialogue_ui/MarginContainer/HBoxContainer/MarginContainer/text
+#INGame_UI - texture_rect node
+@onready var texture_rect: TextureRect = $InGame_UI/Control/MarginContainer/VBoxContainer/dialogue_ui/MarginContainer/HBoxContainer/MarginContainer2/TextureRect
+#INGame_UI - animationplayer node - to play animation;
+@onready var animation_player: AnimationPlayer = $InGame_UI/AnimationPlayer
+#inGame_UI - Typewriter_audio
+@onready var typewriter_audio: AudioStreamPlayer = $InGame_UI/typewriter_audio
+#inGame_UI - black_screen_title
+@onready var title: Label = $InGame_UI/balck_screen/MarginContainer/VBoxContainer/title
+#inGame_UI - black_screen_description
+@onready var description: Label = $InGame_UI/balck_screen/MarginContainer/VBoxContainer/description
+
 
 var last_dir: Vector2 = Vector2.DOWN
 var current_context = null # Used by the context button to call current_context.interact()
 
 func _ready() -> void:
 	add_to_group("player")
-
-	SignalBus.context_update.connect(_on_context_update)
+	SignalBus.context_update.connect(_on_context_update);
+	
+	GameManager.basic_cutscene(
+		camera_2d,control,
+		texture_rect,
+		text,
+		animation_player,
+		typewriter_audio,
+		title,
+		description
+		); # cutscene function
+		
 	#signalbus.player_died.connect(_on_player_died)
 
 func _unhandled_input(event: InputEvent) -> void:
-	if event.is_action_pressed("contextual") and current_context:
+	if event.is_action_pressed("contextual") and current_context and !GameManager.is_player_movement_freeze:
 		if current_context.has_method("interact"):
 			current_context.interact()
 		else:
@@ -26,6 +54,9 @@ func _unhandled_input(event: InputEvent) -> void:
 
 
 func _physics_process(delta: float) -> void:
+	if GameManager.is_player_movement_freeze:
+		return;
+		
 	var direction := Input.get_vector("move_left", "move_right", "move_up", "move_down").normalized()
 
 	handle_animation(direction)

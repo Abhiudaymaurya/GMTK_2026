@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://blmhjl51p1h1a"]
+
+[ext_resource type="FontFile" uid="uid://c4nhkpqxmc352" path="res://Font/RubikWetPaint-Regular.ttf" id="1_tt5f1"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_aqgdg"]
+font = ExtResource("1_tt5f1")
+font_size = 78
+font_color = Color(0.9019608, 0.49411765, 0.13333334, 1)
+outline_size = 29
+outline_color = Color(1, 0.9647059, 0.8352941, 1)
+shadow_size = 45
+shadow_color = Color(0.06666667, 0.06666667, 0.06666667, 1)
+shadow_offset = Vector2(3.77, 6.695)
+
+[node name="MainMenu" type="Control" unique_id=1317505310]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="." unique_id=893264532]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.25694445
+anchor_top = 0.11265432
+anchor_right = 0.7881944
+anchor_bottom = 0.40432104
+offset_bottom = -3.0517578e-05
+text = "Countdown to Spring"
+label_settings = SubResource("LabelSettings_aqgdg")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+metadata/_edit_use_anchors_ = true
