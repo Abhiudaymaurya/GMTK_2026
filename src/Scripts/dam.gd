@@ -11,12 +11,11 @@ class_name Dam
 @export var base_wood_cost: int = 5
 @export var base_stone_cost: int = 3
 
-var health: int
 var is_destroyed: bool = false
 
 
 func _ready() -> void:
-	health = clamp(starting_health, 0, max_health)
+	GameManager.dam_health = clamp(starting_health, 0, max_health)
 
 	SignalBus.day_changed.connect(_on_day_changed)
 
@@ -29,16 +28,16 @@ func _on_day_changed(_day: int) -> void:
 	if is_destroyed:
 		return
 
-	health -= health_loss_per_day
-	health = max(health, 0)
+	GameManager.dam_health -= health_loss_per_day
+	GameManager.dam_health = max(GameManager.dam_health, 0)
 
-	print(health)
-	if health <= 0:
+	print(GameManager.dam_health)
+	if GameManager.dam_health <= 0:
 		destroy_dam()
 
 
 func get_repair_cost() -> Dictionary:
-	var damage_ratio: float = 1.0 - (float(health) / max_health)
+	var damage_ratio: float = 1.0 - (float(GameManager.dam_health) / max_health)
 
 	var multiplier: float = pow(1.0 + damage_ratio, cost_exponent)
 
@@ -49,7 +48,7 @@ func get_repair_cost() -> Dictionary:
 
 
 func can_repair(cost: Dictionary) -> bool:
-	if is_destroyed or health >= max_health:
+	if is_destroyed or GameManager.dam_health >= max_health:
 		return false
 
 	for resource in cost:
@@ -63,7 +62,7 @@ func try_repair() -> bool:
 	if is_destroyed:
 		return false
 
-	if health >= max_health:
+	if GameManager.dam_health >= max_health:
 		return false
 
 	var cost: Dictionary = get_repair_cost()
@@ -76,7 +75,7 @@ func try_repair() -> bool:
 	for resource in cost:
 		GameManager.inv_remove_item(resource, cost[resource])
 
-	health = min(health + repair_amount, max_health)
+	GameManager.dam_health = min(GameManager.dam_health + repair_amount, max_health)
 
 	return true
 
@@ -86,18 +85,18 @@ func destroy_dam() -> void:
 		return
 
 	is_destroyed = true
-	health = 0
+	GameManager.dam_health = 0
 
 	# - Trigger game over
 	print("Dam destroyed")
 
 
 func get_health() -> int:
-	return health
+	return GameManager.dam_health
 
 
 func get_health_ratio() -> float:
-	return float(health) / max_health
+	return float(GameManager.dam_health) / max_health
 
 
 func _on_detection_box_body_exited(body: Node2D) -> void:
