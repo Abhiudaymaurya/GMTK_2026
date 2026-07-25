@@ -192,7 +192,7 @@ func _on_day_change(new_day: int) -> void:
 func game_evaluation() -> String:
 	if stored_food < 100:
 		return "STARVED"
-	elif dam_health < 100:
+	elif dam_health < 60:
 		return "FLOODED"
 	elif lodge_tier < 1:
 		return "FROZEN"
