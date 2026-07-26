@@ -21,6 +21,7 @@
 [ext_resource type="Texture2D" uid="uid://c78bbujq6slor" path="res://Assets/UI/Premade dialog box medium.png" id="18_igrcy"]
 [ext_resource type="AudioStream" uid="uid://iowkpfgiekro" path="res://Assets/audio/typewriter (1).mp3" id="21_olqyp"]
 [ext_resource type="Texture2D" uid="uid://sk6uq2rgcu3x" path="res://Assets/UI/buttonmenu.png" id="22_wpjfl"]
+[ext_resource type="Texture2D" uid="uid://wjvehgahiywq" path="res://Assets/UI/beri.png" id="22_xuaoq"]
 [ext_resource type="Texture2D" uid="uid://cm3i7e1eft4y1" path="res://Assets/UI/wod.png" id="23_2ijsl"]
 [ext_resource type="Texture2D" uid="uid://bcwpglc668k0" path="res://Assets/UI/ston.png" id="24_p1odr"]
 [ext_resource type="Texture2D" uid="uid://c7ybse5x0h32u" path="res://Assets/UI/sandclock/1.png" id="25_83xs0"]
@@ -130,19 +131,17 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_fo5ed"]
 radius = 33.13608
 
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_tqfvg"]
-size = Vector2(32, 32)
-
 [sub_resource type="LabelSettings" id="LabelSettings_olqyp"]
 font = ExtResource("31_xuaoq")
 font_size = 115
 
 [sub_resource type="LabelSettings" id="LabelSettings_wpjfl"]
 font = ExtResource("31_xuaoq")
+font_size = 24
 
 [sub_resource type="LabelSettings" id="LabelSettings_igrcy"]
 font = ExtResource("31_xuaoq")
-font_color = Color(0.45490196, 0.26666668, 0.17254902, 1)
+font_color = Color(0.70980394, 0.5568628, 0.4627451, 1)
 outline_size = 2
 outline_color = Color(0, 0, 0, 1)
 
@@ -724,7 +723,7 @@ texture = ExtResource("24_p1odr")
 layout_mode = 2
 offset_transform_enabled = true
 offset_transform_rotation = 1.5707964
-texture = SubResource("PlaceholderTexture2D_tqfvg")
+texture = ExtResource("22_xuaoq")
 
 [node name="VBoxContainer2" type="HBoxContainer" parent="InGame_UI/inv/TextureRect/MarginContainer/HBoxContainer" unique_id=1200884943]
 layout_mode = 2
