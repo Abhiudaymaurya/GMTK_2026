@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://baon2b4aet5qv" path="res://Scripts/interactables/tree.gd" id="1_s488w"]
 [ext_resource type="Shader" uid="uid://sb67vt5twqhi" path="res://Scripts/shader/tree_wind_sway.gdshader" id="2_yg7hb"]
-[ext_resource type="Texture2D" uid="uid://cdkt8i86mdobk" path="res://Assets/tree.png" id="3_s488w"]
+[ext_resource type="Texture2D" uid="uid://co3berxw4tibd" path="res://Assets/pesto_green.png" id="3_s488w"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_e0ngr"]
 shader = ExtResource("2_yg7hb")
@@ -14,10 +14,10 @@ shader_parameter/wind_speed = 1.0
 shader_parameter/scale = 2.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_s488w"]
-size = Vector2(68, 15)
+size = Vector2(39, 19)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_tqfvg"]
-size = Vector2(173, 142)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yg7hb"]
+size = Vector2(113, 112)
 
 [node name="tree" type="StaticBody2D" unique_id=1652929144]
 script = ExtResource("1_s488w")
@@ -25,7 +25,7 @@ metadata/_custom_type_script = "uid://bhhemxbuevwxu"
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=912964129]
 material = SubResource("ShaderMaterial_e0ngr")
-position = Vector2(22.236954, -168.66666)
+position = Vector2(-7.7499924, -134.5)
 scale = Vector2(0.5339426, 0.5885417)
 texture = ExtResource("3_s488w")
 
@@ -38,7 +38,7 @@ position = Vector2(0.23695374, -21.666656)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionBox" unique_id=1609749411]
 position = Vector2(4.5, 21)
-shape = SubResource("RectangleShape2D_tqfvg")
+shape = SubResource("RectangleShape2D_yg7hb")
 
 [connection signal="body_entered" from="DetectionBox" to="." method="_on_detection_box_body_entered"]
 [connection signal="body_exited" from="DetectionBox" to="." method="_on_detection_box_body_exited"]
