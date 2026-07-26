@@ -193,13 +193,14 @@ func black_screen(
 func _on_day_change(new_day: int) -> void:
 	is_player_movement_freeze = true
 	is_day_started = false
+	
+	AudioManager.play_day(new_day);
 
 	await black_screen(title, description, animation_player, typewriter_audio,
 		str(7 - new_day) + " DAYS " + "LEFT",
 			"Another day has passed.", is_game_end
 	)
-
-
+	
 	if new_day == 7:
 		await game_over(game_evaluation())
 
@@ -249,3 +250,7 @@ func game_over(state: String) -> void:
 				"You prepared well and survived the winter.",
 				is_game_end
 			)
+			AudioManager.play_win();
+			return;
+			
+	AudioManager.play_game_over()

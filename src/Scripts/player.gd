@@ -43,6 +43,7 @@ func _ready() -> void:
 	add_to_group("player")
 	SignalBus.context_update.connect(_on_context_update);
 	SignalBus.update_hint.connect(_set_hint)
+	AudioManager.game_start();
 	
 	GameManager.basic_cutscene(
 		camera_2d, control,

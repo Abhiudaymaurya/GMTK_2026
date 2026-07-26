@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://becvdf55235tl"
+path="res://.godot/imported/Cold den.mp3-46ee216b18915839a44e472de9ecb71e.mp3str"
+
+[deps]
+
+source_file="res://Assets/audio/game_audio/night_audio/Cold den.mp3"
+dest_files=["res://.godot/imported/Cold den.mp3-46ee216b18915839a44e472de9ecb71e.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
