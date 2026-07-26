@@ -1322,7 +1322,7 @@ position = Vector2(333, 665)
 scale = Vector2(1.1, 1.1)
 
 [node name="Lodge" parent="structurs" unique_id=615753691 instance=ExtResource("11_ikia7")]
-position = Vector2(606, 438)
+position = Vector2(614, 460)
 
 [node name="storage" parent="structurs" unique_id=2051030974 instance=ExtResource("12_7yui6")]
 z_index = -1

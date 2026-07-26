@@ -27,6 +27,11 @@ var speed: float = NORMAL_SPEED
 
 @onready var hint_lable: RichTextLabel = $InGame_UI/hint/lable
 
+# ui - inv
+@onready var wood_count: Label = %wood_count
+@onready var stone_count: Label = %stone_count
+@onready var food_count: Label = %food_count
+
 var prev_hint_text: String = ""
 
 var last_dir: Vector2 = Vector2.DOWN
@@ -63,7 +68,8 @@ func _physics_process(delta: float) -> void:
 		
 	var direction := Input.get_vector("move_left", "move_right", "move_up", "move_down").normalized()
 
-	handle_animation(direction)
+	_handle_animation(direction)
+	_update_ui()
 
 	if direction != Vector2.ZERO:
 		velocity = direction * speed * delta
@@ -97,9 +103,13 @@ func _set_hint(hint: String) -> void:
 	for i in hint_lable.get_total_character_count():
 		hint_lable.visible_characters = i + 1
 		await get_tree().create_timer(GameManager.dialogue_speed).timeout
-	
 
-func handle_animation(dir: Vector2) -> void:
+func _update_ui() -> void:
+	wood_count.text = str(GameManager.player_inventory[GameManager.Item.WOOD])
+	stone_count.text = str(GameManager.player_inventory[GameManager.Item.STONE])
+	food_count.text = str(GameManager.player_inventory[GameManager.Item.FOOD])
+
+func _handle_animation(dir: Vector2) -> void:
 	if is_player_in_water():
 		speed = WATER_SPEED
 		water_overlay.visible = true

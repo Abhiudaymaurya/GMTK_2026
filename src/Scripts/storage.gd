@@ -12,7 +12,7 @@ func _ready() -> void:
 
 func interact() -> void:
 	try_store()
-	SignalBus.update_hin.emit(get_hint())
+	SignalBus.update_hint.emit(get_hint())
 
 
 func try_store() -> bool:

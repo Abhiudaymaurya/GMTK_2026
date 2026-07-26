@@ -7,7 +7,7 @@
 size = Vector2(167, 88)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kcs4j"]
-size = Vector2(226, 186)
+size = Vector2(207, 159)
 
 [node name="Lodge" type="Node2D" unique_id=615753691]
 script = ExtResource("1_63xie")
@@ -29,7 +29,7 @@ shape = SubResource("RectangleShape2D_258wy")
 position = Vector2(0, -40)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1758297425]
-position = Vector2(-1, -1)
+position = Vector2(8.5, -5.5)
 shape = SubResource("RectangleShape2D_kcs4j")
 debug_color = Color(0.22352941, 0, 1, 0.41960785)
 
