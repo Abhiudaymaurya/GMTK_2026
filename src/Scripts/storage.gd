@@ -40,7 +40,7 @@ func get_hint() -> String:
 	var capacity: int = get_storage_capacity()
 	var stored: int = GameManager.stored_food
 
-	return "Storage: %d/%d\nPress [img=32]res://Assets/UI/keyboard_e.png[/img] to store [img=32]res://food.svg[/img]" % [
+	return "Storage: %d/%d\nPress [img=32]res://Assets/UI/keyboard_e.png[/img] to store [img=32]res://Assets/UI/beri.png[/img]" % [
 		stored,
 		capacity
 	]

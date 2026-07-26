@@ -125,7 +125,7 @@ func basic_cutscene(
 	tween.parallel().tween_property(camera, "offset", Vector2(0, 0), 2.0)
 
 	await tween.finished;
-	black_screen(title, description, animation_player, typewriter_audio, "7 DAY LEFt", "The countdown begins.", is_game_end)
+	black_screen(title, description, animation_player, typewriter_audio, "7 DAYS LEFt", "The countdown begins.", is_game_end)
 
 # show_dialogue function
 
@@ -193,11 +193,14 @@ func black_screen(
 func _on_day_change(new_day: int) -> void:
 	is_player_movement_freeze = true
 	is_day_started = false
+
+	var days_left: int = 7 - new_day
+	var days_text: String = "%d DAY%s LEFT" % [days_left, "" if days_left <= 1 else "S"]
 	
 	AudioManager.play_day(new_day);
 
 	await black_screen(title, description, animation_player, typewriter_audio,
-		str(7 - new_day) + " DAYS " + "LEFT",
+		days_text,
 			"Another day has passed.", is_game_end
 	)
 	
@@ -207,7 +210,7 @@ func _on_day_change(new_day: int) -> void:
 func game_evaluation() -> String:
 	if stored_food < 70:
 		return "STARVED"
-	elif dam_health < 60:
+	elif dam_health < 50:
 		return "FLOODED"
 	elif lodge_tier < 1:
 		return "FROZEN"
@@ -251,6 +254,6 @@ func game_over(state: String) -> void:
 				is_game_end
 			)
 			AudioManager.play_win();
-			return;
+			return ;
 			
 	AudioManager.play_game_over()

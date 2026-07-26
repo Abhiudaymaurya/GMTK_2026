@@ -1145,6 +1145,7 @@ position = Vector2(-653, -318)
 position = Vector2(-847, -568)
 day_length_in_minutes = 1.0
 initial_hour = 0.0
+use_debug_time = true
 
 [node name="resources" type="Node2D" parent="." unique_id=921875877]
 y_sort_enabled = true
@@ -1324,6 +1325,7 @@ position = Vector2(-847, -568)
 z_index = -1
 position = Vector2(333, 665)
 scale = Vector2(1.1, 1.1)
+starting_health = 10
 
 [node name="Lodge" parent="structurs" unique_id=615753691 instance=ExtResource("11_ikia7")]
 position = Vector2(614, 460)

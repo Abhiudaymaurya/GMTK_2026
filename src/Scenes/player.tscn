@@ -841,6 +841,18 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
 
+[node name="description2" type="Label" parent="InGame_UI/balck_screen/MarginContainer/VBoxContainer" unique_id=443529307]
+custom_minimum_size = Vector2(300, 20)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 2
+text = "on Game Over Press E to return to the main menu.
+"
+label_settings = SubResource("LabelSettings_wpjfl")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
 [node name="Control" type="Control" parent="InGame_UI" unique_id=370514667]
 layout_mode = 3
 anchors_preset = 15

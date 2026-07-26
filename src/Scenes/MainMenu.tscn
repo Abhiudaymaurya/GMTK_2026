@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://blmhjl51p1h1a"]
 
 [ext_resource type="Script" uid="uid://ck405jbi12v41" path="res://Scripts/main_menu.gd" id="1_8um5k"]
-[ext_resource type="FontFile" uid="uid://c4nhkpqxmc352" path="res://Font/RubikWetPaint-Regular.ttf" id="1_tt5f1"]
 [ext_resource type="Texture2D" uid="uid://dyyeou8unvh7i" path="res://Assets/UI/background.png" id="2_853f1"]
 [ext_resource type="FontFile" uid="uid://beuioh8s6koim" path="res://Font/FORESTANA.ttf" id="2_df05h"]
 [ext_resource type="Texture2D" uid="uid://sk6uq2rgcu3x" path="res://Assets/UI/buttonmenu.png" id="3_8saeu"]
@@ -18,7 +17,7 @@ shadow_color = Color(0.06666667, 0.06666667, 0.06666667, 1)
 shadow_offset = Vector2(3.77, 6.695)
 
 [sub_resource type="LabelSettings" id="LabelSettings_ghw46"]
-font = ExtResource("1_tt5f1")
+font = ExtResource("2_df05h")
 font_size = 30
 font_color = Color(0.7647059, 0.6039216, 0.43137255, 1)
 outline_size = 5

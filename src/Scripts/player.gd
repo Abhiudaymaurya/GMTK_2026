@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 const NORMAL_SPEED: float = 300.0 * 50.0
 const WATER_SPEED: float = 300.0 * 60.0
+const MainMENUPATH = "res://Scenes/MainMenu.tscn"
 
 var speed: float = NORMAL_SPEED
 
@@ -56,10 +57,15 @@ func _ready() -> void:
 		title,
 		description
 		); # cutscene function
-		
+
+	SceneManager.preload_scene(MainMENUPATH);
+
 	#signalbus.player_died.connect(_on_player_died)
 
 func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed("contextual") and current_context and GameManager.is_game_end:
+		_go_back()
+
 	if event.is_action_pressed("contextual") and current_context and !GameManager.is_player_movement_freeze:
 		if current_context.has_method("interact"):
 			current_context.interact()
@@ -177,3 +183,8 @@ func is_player_in_water() -> bool:
 	var tile_data = river_tile_map.get_cell_tile_data(tile_pos)
 
 	return tile_data != null and tile_data.get_custom_data("is_water")
+
+
+func _go_back() -> void:
+	if SceneManager.is_scene_loaded(MainMENUPATH):
+		SceneManager.change_scene(MainMENUPATH);
