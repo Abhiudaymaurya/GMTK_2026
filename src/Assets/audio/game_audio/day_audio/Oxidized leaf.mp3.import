@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://m1klqlqalxry"
+path="res://.godot/imported/Oxidized leaf.mp3-cda14c377b3acf20ead2a5a28721bb56.mp3str"
+
+[deps]
+
+source_file="res://Assets/audio/game_audio/day_audio/Oxidized leaf.mp3"
+dest_files=["res://.godot/imported/Oxidized leaf.mp3-cda14c377b3acf20ead2a5a28721bb56.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

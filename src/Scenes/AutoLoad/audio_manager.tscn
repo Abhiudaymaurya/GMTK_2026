@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://dyg2cdj5iikj6"]
+
+[ext_resource type="Script" uid="uid://cdvltf124fgup" path="res://Autoload/audio_manager.gd" id="1_2httl"]
+[ext_resource type="AudioStream" uid="uid://m1klqlqalxry" path="res://Assets/audio/game_audio/day_audio/Oxidized leaf.mp3" id="2_7ha7v"]
+
+[node name="AudioManager" type="Node2D" unique_id=1561339227]
+script = ExtResource("1_2httl")
+
+[node name="MusicPlayer" type="AudioStreamPlayer" parent="." unique_id=844415139]
+stream = ExtResource("2_7ha7v")
