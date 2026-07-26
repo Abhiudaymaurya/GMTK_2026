@@ -21,11 +21,18 @@ SignalBus="*uid://dd1tqqf5825o7"
 GameManager="*uid://c6di1oque3a16"
 SceneManager="*uid://dryutmsmk3uo"
 AudioManager="*uid://dyg2cdj5iikj6"
+EnvironmentManager="*uid://bm2kii1nh6x7u"
 
 [display]
 
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
+
+[file_customization]
+
+folder_colors={
+"res://Autoload/": "green"
+}
 
 [input]
 

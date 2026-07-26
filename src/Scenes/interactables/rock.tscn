@@ -2,6 +2,21 @@
 
 [ext_resource type="Script" uid="uid://b6erw2mbrupbh" path="res://Scripts/interactables/rock.gd" id="1_lgx4v"]
 [ext_resource type="Texture2D" uid="uid://c0rk3yc21s10o" path="res://Assets/bigrock.png" id="2_5mkji"]
+[ext_resource type="Shader" uid="uid://p8frq2pjlihl" path="res://Scripts/shader/tree_hit.gdshader" id="2_rdjbi"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_yg7hb"]
+shader = ExtResource("2_rdjbi")
+shader_parameter/get_hit = false
+shader_parameter/hit_effect = 1.0
+shader_parameter/shake_intensity = 10.0
+shader_parameter/flash_speed = 30.0
+shader_parameter/flash_color = Color(1, 1, 0, 1)
+shader_parameter/render_noise = false
+shader_parameter/amplitude = 0.05
+shader_parameter/time_scale = 0.04
+shader_parameter/noise_scale = 0.001
+shader_parameter/rotation_strength = 1.0
+shader_parameter/rotation_pivot = Vector2(0.5, 1)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_vd8au"]
 radius = 54.33231
@@ -9,12 +24,15 @@ radius = 54.33231
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tqfvg"]
 size = Vector2(186, 184)
 
-[node name="rock" type="StaticBody2D" unique_id=1652929144]
+[node name="rock" type="StaticBody2D" unique_id=1652929144 node_paths=PackedStringArray("sprite_1")]
 scale = Vector2(0.75, 0.75)
 script = ExtResource("1_lgx4v")
+sprite_1 = NodePath("Sprite2D")
 metadata/_custom_type_script = "uid://bhhemxbuevwxu"
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=912964129]
+z_index = 5
+material = SubResource("ShaderMaterial_yg7hb")
 texture = ExtResource("2_5mkji")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1604382433]

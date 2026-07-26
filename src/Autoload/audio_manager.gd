@@ -7,6 +7,7 @@ const game_over_music = preload("uid://cqgc81jst6tei");
 const win_music = preload("uid://dvb6fj5i3mdld");
 const Main_Menu = preload("uid://becvdf55235tl")
 const OXIDIZED_LEAF_GameStart = preload("uid://m1klqlqalxry")
+const COFFETI_AUDIO = preload("uid://ce53sn74xomdx")
 
 var day_music : Array =  [
 	#night-track
@@ -56,4 +57,9 @@ func play_win():
 func main_menu():
 	music_player.stop()
 	music_player.stream = Main_Menu
+	music_player.play()
+
+func play_confetti_audio():
+	music_player.stop()
+	music_player.stream = COFFETI_AUDIO
 	music_player.play()

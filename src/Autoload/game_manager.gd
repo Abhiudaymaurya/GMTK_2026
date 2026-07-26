@@ -62,7 +62,6 @@ var player_inventory: Dictionary[Item, int] = {}
 func _ready() -> void:
 	for item in Item.values():
 		player_inventory[item] = 0
-
 	SignalBus.day_changed.connect(_on_day_change)
 
 
@@ -198,7 +197,8 @@ func _on_day_change(new_day: int) -> void:
 	var days_text: String = "%d DAY%s LEFT" % [days_left, "" if days_left <= 1 else "S"]
 	
 	AudioManager.play_day(new_day);
-
+	EnvironmentManager.change_envirement(new_day);
+	print("called_env_with_",new_day)
 	await black_screen(title, description, animation_player, typewriter_audio,
 		days_text,
 			"Another day has passed.", is_game_end

@@ -34,6 +34,7 @@ var speed: float = NORMAL_SPEED
 @onready var food_count: Label = %food_count
 @onready var day_progress: ProgressBar = %day_progress
 @onready var day_lable: Label = %day_lable
+@onready var color_rect: ColorRect = $InGame_UI/envirement_node/ColorRect
 
 var prev_hint_text: String = ""
 
@@ -47,7 +48,7 @@ func _ready() -> void:
 	SignalBus.context_update.connect(_on_context_update);
 	SignalBus.update_hint.connect(_set_hint)
 	AudioManager.game_start();
-	
+	EnvironmentManager._setup_(color_rect);
 	GameManager.basic_cutscene(
 		camera_2d, control,
 		texture_rect,
