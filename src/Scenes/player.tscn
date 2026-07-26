@@ -19,11 +19,17 @@
 [ext_resource type="Texture2D" uid="uid://bsr6qf30dflt7" path="res://Assets/beaver/side/Timeline_1_0004.png" id="6_tx1dd"]
 [ext_resource type="Texture2D" uid="uid://bvatratpgypw1" path="res://Assets/beaver/water_overlay.png" id="17_qqcod"]
 [ext_resource type="Texture2D" uid="uid://c78bbujq6slor" path="res://Assets/UI/Premade dialog box medium.png" id="18_igrcy"]
-[ext_resource type="FontFile" uid="uid://c4nhkpqxmc352" path="res://Font/RubikWetPaint-Regular.ttf" id="19_fs7ks"]
 [ext_resource type="AudioStream" uid="uid://iowkpfgiekro" path="res://Assets/audio/typewriter (1).mp3" id="21_olqyp"]
 [ext_resource type="Texture2D" uid="uid://sk6uq2rgcu3x" path="res://Assets/UI/buttonmenu.png" id="22_wpjfl"]
 [ext_resource type="Texture2D" uid="uid://cm3i7e1eft4y1" path="res://Assets/UI/wod.png" id="23_2ijsl"]
 [ext_resource type="Texture2D" uid="uid://bcwpglc668k0" path="res://Assets/UI/ston.png" id="24_p1odr"]
+[ext_resource type="Texture2D" uid="uid://c7ybse5x0h32u" path="res://Assets/UI/sandclock/1.png" id="25_83xs0"]
+[ext_resource type="Texture2D" uid="uid://bf0mpwgsdlp5j" path="res://Assets/UI/menuwindow.png" id="25_ypfnu"]
+[ext_resource type="Texture2D" uid="uid://bqe6cura1nnws" path="res://Assets/UI/sandclock/2.png" id="26_ypfnu"]
+[ext_resource type="Texture2D" uid="uid://bsjx8w6eocsjr" path="res://Assets/UI/sandclock/3.png" id="27_xuaoq"]
+[ext_resource type="Texture2D" uid="uid://ckjexq0fm3fpk" path="res://Assets/UI/sandclock/4.png" id="28_wohnl"]
+[ext_resource type="Texture2D" uid="uid://mfrp4dww55o1" path="res://Assets/UI/sandclock/5.png" id="29_36dho"]
+[ext_resource type="FontFile" uid="uid://beuioh8s6koim" path="res://Font/FORESTANA.ttf" id="31_xuaoq"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_tqfvg"]
 animations = [{
@@ -128,15 +134,15 @@ radius = 33.13608
 size = Vector2(32, 32)
 
 [sub_resource type="LabelSettings" id="LabelSettings_olqyp"]
-font = ExtResource("19_fs7ks")
+font = ExtResource("31_xuaoq")
 font_size = 115
 
 [sub_resource type="LabelSettings" id="LabelSettings_wpjfl"]
-font = ExtResource("19_fs7ks")
+font = ExtResource("31_xuaoq")
 
 [sub_resource type="LabelSettings" id="LabelSettings_igrcy"]
-font = ExtResource("19_fs7ks")
-font_color = Color(0.9711272, 0.8626197, 0.79752403, 1)
+font = ExtResource("31_xuaoq")
+font_color = Color(0.45490196, 0.26666668, 0.17254902, 1)
 outline_size = 2
 outline_color = Color(0, 0, 0, 1)
 
@@ -588,6 +594,41 @@ _data = {
 &"open_dialogue_box": SubResource("Animation_olqyp")
 }
 
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_tqfvg"]
+frames = 5
+frame_0/texture = ExtResource("25_83xs0")
+frame_0/duration = 0.1
+frame_1/texture = ExtResource("26_ypfnu")
+frame_1/duration = 0.1
+frame_2/texture = ExtResource("27_xuaoq")
+frame_2/duration = 0.1
+frame_3/texture = ExtResource("28_wohnl")
+frame_3/duration = 0.1
+frame_4/texture = ExtResource("29_36dho")
+frame_4/duration = 0.1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ypfnu"]
+bg_color = Color(0.6013076, 0.50711155, 0.340899, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.7411765, 0.68235296, 0.48235294, 1)
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_detail = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xuaoq"]
+bg_color = Color(0.4627451, 0.27058825, 0.18039216, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.7411765, 0.68235296, 0.48235294, 1)
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_detail = 4
+
 [node name="Player" type="CharacterBody2D" unique_id=1689520712]
 y_sort_enabled = true
 script = ExtResource("1_v0iea")
@@ -738,6 +779,7 @@ anchors_preset = 10
 anchor_right = 1.0
 grow_horizontal = 2
 size_flags_vertical = 3
+theme_override_fonts/normal_font = ExtResource("31_xuaoq")
 theme_override_font_sizes/normal_font_size = 32
 bbcode_enabled = true
 text = "Press [img=32]res://icon.svg[/img] to chop tree"
@@ -882,3 +924,80 @@ libraries/ = SubResource("AnimationLibrary_l6n3p")
 [node name="typewriter_audio" type="AudioStreamPlayer" parent="InGame_UI" unique_id=1137045244]
 stream = ExtResource("21_olqyp")
 volume_db = 10.0
+
+[node name="clock" type="Control" parent="InGame_UI" unique_id=1123989957]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 13.0
+offset_top = 11.0
+offset_right = 53.0
+offset_bottom = 51.0
+scale = Vector2(1.5, 1.5)
+
+[node name="HBoxContainer" type="HBoxContainer" parent="InGame_UI/clock" unique_id=268594331]
+layout_mode = 0
+offset_right = 285.0
+offset_bottom = 40.0
+
+[node name="TextureRect2" type="TextureRect" parent="InGame_UI/clock/HBoxContainer" unique_id=1633963497]
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("25_ypfnu")
+expand_mode = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="InGame_UI/clock/HBoxContainer/TextureRect2" unique_id=968491665]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="TextureRect" type="TextureRect" parent="InGame_UI/clock/HBoxContainer/TextureRect2/MarginContainer" unique_id=1409294908]
+layout_mode = 2
+texture = SubResource("AnimatedTexture_tqfvg")
+expand_mode = 1
+
+[node name="TextureRect" type="TextureRect" parent="InGame_UI/clock/HBoxContainer" unique_id=810335192]
+z_index = -1
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 6.0
+offset_transform_enabled = true
+offset_transform_position_ratio = Vector2(-0.095, 0)
+texture = ExtResource("25_ypfnu")
+expand_mode = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="InGame_UI/clock/HBoxContainer/TextureRect" unique_id=1186620776]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+offset_transform_enabled = true
+offset_transform_position_ratio = Vector2(0, 0.14)
+theme_override_constants/separation = 0
+
+[node name="day_lable" type="Label" parent="InGame_UI/clock/HBoxContainer/TextureRect/VBoxContainer" unique_id=789053208]
+unique_name_in_owner = true
+layout_mode = 2
+offset_transform_enabled = true
+offset_transform_position_ratio = Vector2(0.14, 0.05)
+theme_override_colors/font_color = Color(0.4627451, 0.27058825, 0.18039216, 1)
+theme_override_fonts/font = ExtResource("31_xuaoq")
+text = "DAY: 1"
+
+[node name="day_progress" type="ProgressBar" parent="InGame_UI/clock/HBoxContainer/TextureRect/VBoxContainer" unique_id=412423718]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 10)
+custom_maximum_size = Vector2(150, -1)
+layout_mode = 2
+offset_transform_enabled = true
+offset_transform_position_ratio = Vector2(0.24, 0)
+theme_override_styles/background = SubResource("StyleBoxFlat_ypfnu")
+theme_override_styles/fill = SubResource("StyleBoxFlat_xuaoq")
+max_value = 24.0
+value = 24.0
+show_percentage = false

@@ -27,10 +27,12 @@ var speed: float = NORMAL_SPEED
 
 @onready var hint_lable: RichTextLabel = $InGame_UI/hint/lable
 
-# ui - inv
+# ui - xpo
 @onready var wood_count: Label = %wood_count
 @onready var stone_count: Label = %stone_count
 @onready var food_count: Label = %food_count
+@onready var day_progress: ProgressBar = %day_progress
+@onready var day_lable: Label = %day_lable
 
 var prev_hint_text: String = ""
 
@@ -113,6 +115,10 @@ func _update_ui() -> void:
 	wood_count.text = str(GameManager.player_inventory[GameManager.Item.WOOD])
 	stone_count.text = str(GameManager.player_inventory[GameManager.Item.STONE])
 	food_count.text = str(GameManager.player_inventory[GameManager.Item.FOOD])
+
+	var day_str: String = "DAY " + str(GameManager.day + 1)
+	day_lable.text = day_str
+	day_progress.value = (24 - GameManager.time)
 
 func _handle_animation(dir: Vector2) -> void:
 	if is_player_in_water():
