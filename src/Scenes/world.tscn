@@ -1145,7 +1145,6 @@ position = Vector2(-653, -318)
 position = Vector2(-847, -568)
 day_length_in_minutes = 1.0
 initial_hour = 0.0
-use_debug_time = true
 
 [node name="resources" type="Node2D" parent="." unique_id=921875877]
 y_sort_enabled = true
