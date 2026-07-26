@@ -46,7 +46,7 @@ func _play_break_visual() -> void:
 	var original := sprite_1.scale
 	var reduced := original * 0.9
 
-	sprite_2.scale = sprite_1.scale
+	# sprite_2.scale = sprite_1.scale
 
 	var tween := create_tween()
 
