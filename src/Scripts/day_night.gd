@@ -4,10 +4,6 @@ extends CanvasModulate
 @export var day_length_in_minutes: float = 5.0
 @export var initial_hour: float = 12.0
 
-#variables for testing
-@export var debug_day_length_seconds := 10.0
-@export var use_debug_time := false;
-
 var time: float = 0.0
 var day: int = 0
 
@@ -25,10 +21,9 @@ func _process(delta: float) -> void:
 	if GameManager.is_player_movement_freeze:
 		return
 		
-	if use_debug_time:
-		time += delta / debug_day_length_seconds
-	else:
-		time += delta / (day_length_in_minutes * 60.0)
+	const DAY_DURATION := 60.0 # seconds (1 minute)
+
+	time += delta / DAY_DURATION
 
 	if time >= 1.0:
 		time -= 1.0

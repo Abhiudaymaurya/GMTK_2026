@@ -4,7 +4,7 @@ var max_tier: int = 3
 
 var upgrade_costs := [
 	{},
-	{GameManager.Item.WOOD: 10, GameManager.Item.STONE: 5},
+	{GameManager.Item.WOOD: 2, GameManager.Item.STONE: 2},
 	{GameManager.Item.WOOD: 20, GameManager.Item.STONE: 10},
 	{GameManager.Item.WOOD: 25, GameManager.Item.STONE: 20},
 ]
@@ -52,6 +52,7 @@ func try_upgrade() -> bool:
 	for resource in cost:
 		GameManager.inv_remove_item(resource, cost[resource])
 	
+	EnvironmentManager.play_confetti();
 	GameManager.lodge_tier += 1
 	SignalBus.lodge_upgraded.emit(GameManager.lodge_tier)
 	

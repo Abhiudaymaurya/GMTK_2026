@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://baon2b4aet5qv" path="res://Scripts/interactables/tree.gd" id="1_0vwjc"]
 [ext_resource type="Texture2D" uid="uid://bo0mox7yhnyon" path="res://Assets/bigtree.png" id="2_hd23w"]
 [ext_resource type="Shader" uid="uid://sb67vt5twqhi" path="res://Scripts/shader/tree_wind_sway.gdshader" id="2_tsc5a"]
+[ext_resource type="Shader" uid="uid://p8frq2pjlihl" path="res://Scripts/shader/tree_hit.gdshader" id="4_vlths"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_tsc5a"]
 shader = ExtResource("2_tsc5a")
@@ -12,6 +13,20 @@ shader_parameter/wind_end_threshold_2 = 0.1
 shader_parameter/wind_strength = 0.090000004275
 shader_parameter/wind_speed = 1.0
 shader_parameter/scale = 2.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vlths"]
+shader = ExtResource("4_vlths")
+shader_parameter/get_hit = false
+shader_parameter/hit_effect = 0.522000024795
+shader_parameter/shake_intensity = 10.0
+shader_parameter/flash_speed = 30.0
+shader_parameter/flash_color = Color(1, 0, 0, 1)
+shader_parameter/render_noise = false
+shader_parameter/amplitude = 0.05
+shader_parameter/time_scale = 0.04
+shader_parameter/noise_scale = 0.001
+shader_parameter/rotation_strength = 1.0
+shader_parameter/rotation_pivot = Vector2(0.5, 1)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uyhgr"]
 size = Vector2(39, 19)
@@ -27,6 +42,12 @@ metadata/_custom_type_script = "uid://bhhemxbuevwxu"
 material = SubResource("ShaderMaterial_tsc5a")
 position = Vector2(-7.7499924, -134.5)
 scale = Vector2(0.5339426, 0.5885417)
+texture = ExtResource("2_hd23w")
+
+[node name="Sprite2D2" type="Sprite2D" parent="." unique_id=1220902398]
+material = SubResource("ShaderMaterial_vlths")
+position = Vector2(-10.249994, -129.49998)
+scale = Vector2(0.54699737, 0.5711805)
 texture = ExtResource("2_hd23w")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1604382433]

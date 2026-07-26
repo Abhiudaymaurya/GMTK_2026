@@ -131,6 +131,8 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_fo5ed"]
 radius = 33.13608
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xuaoq"]
+
 [sub_resource type="LabelSettings" id="LabelSettings_olqyp"]
 font = ExtResource("31_xuaoq")
 font_size = 115
@@ -144,6 +146,41 @@ font = ExtResource("31_xuaoq")
 font_color = Color(0.70980394, 0.5568628, 0.4627451, 1)
 outline_size = 2
 outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_tqfvg"]
+frames = 5
+frame_0/texture = ExtResource("25_83xs0")
+frame_0/duration = 0.1
+frame_1/texture = ExtResource("26_ypfnu")
+frame_1/duration = 0.1
+frame_2/texture = ExtResource("27_xuaoq")
+frame_2/duration = 0.1
+frame_3/texture = ExtResource("28_wohnl")
+frame_3/duration = 0.1
+frame_4/texture = ExtResource("29_36dho")
+frame_4/duration = 0.1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ypfnu"]
+bg_color = Color(0.6013076, 0.50711155, 0.340899, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.7411765, 0.68235296, 0.48235294, 1)
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_detail = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xuaoq"]
+bg_color = Color(0.4627451, 0.27058825, 0.18039216, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.7411765, 0.68235296, 0.48235294, 1)
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_detail = 4
 
 [sub_resource type="Animation" id="Animation_l6n3p"]
 length = 0.001
@@ -593,41 +630,6 @@ _data = {
 &"open_dialogue_box": SubResource("Animation_olqyp")
 }
 
-[sub_resource type="AnimatedTexture" id="AnimatedTexture_tqfvg"]
-frames = 5
-frame_0/texture = ExtResource("25_83xs0")
-frame_0/duration = 0.1
-frame_1/texture = ExtResource("26_ypfnu")
-frame_1/duration = 0.1
-frame_2/texture = ExtResource("27_xuaoq")
-frame_2/duration = 0.1
-frame_3/texture = ExtResource("28_wohnl")
-frame_3/duration = 0.1
-frame_4/texture = ExtResource("29_36dho")
-frame_4/duration = 0.1
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ypfnu"]
-bg_color = Color(0.6013076, 0.50711155, 0.340899, 1)
-border_width_left = 1
-border_width_top = 1
-border_width_right = 1
-border_width_bottom = 1
-border_color = Color(0.7411765, 0.68235296, 0.48235294, 1)
-corner_radius_top_right = 50
-corner_radius_bottom_right = 50
-corner_detail = 4
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xuaoq"]
-bg_color = Color(0.4627451, 0.27058825, 0.18039216, 1)
-border_width_left = 1
-border_width_top = 1
-border_width_right = 1
-border_width_bottom = 1
-border_color = Color(0.7411765, 0.68235296, 0.48235294, 1)
-corner_radius_top_right = 50
-corner_radius_bottom_right = 50
-corner_detail = 4
-
 [node name="Player" type="CharacterBody2D" unique_id=1689520712]
 y_sort_enabled = true
 script = ExtResource("1_v0iea")
@@ -659,6 +661,25 @@ scale = Vector2(0.8, 1)
 texture = ExtResource("17_qqcod")
 
 [node name="InGame_UI" type="CanvasLayer" parent="." unique_id=1729295156]
+
+[node name="envirement_node" type="Control" parent="InGame_UI" unique_id=1665430673]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="InGame_UI/envirement_node" unique_id=326397839]
+material = SubResource("ShaderMaterial_xuaoq")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(1, 1, 1, 0)
 
 [node name="inv" type="Control" parent="InGame_UI" unique_id=1374282442]
 layout_mode = 3
@@ -929,13 +950,6 @@ label_settings = SubResource("LabelSettings_igrcy")
 vertical_alignment = 1
 autowrap_mode = 3
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="InGame_UI" unique_id=1089372173]
-libraries/ = SubResource("AnimationLibrary_l6n3p")
-
-[node name="typewriter_audio" type="AudioStreamPlayer" parent="InGame_UI" unique_id=1137045244]
-stream = ExtResource("21_olqyp")
-volume_db = 10.0
-
 [node name="clock" type="Control" parent="InGame_UI" unique_id=1123989957]
 layout_mode = 3
 anchors_preset = 0
@@ -1012,3 +1026,10 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_xuaoq")
 max_value = 24.0
 value = 24.0
 show_percentage = false
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="InGame_UI" unique_id=1089372173]
+libraries/ = SubResource("AnimationLibrary_l6n3p")
+
+[node name="typewriter_audio" type="AudioStreamPlayer" parent="InGame_UI" unique_id=1137045244]
+stream = ExtResource("21_olqyp")
+volume_db = 10.0

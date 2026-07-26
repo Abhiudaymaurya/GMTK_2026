@@ -1,10 +1,4 @@
-[gd_scene format=3 uid="uid://bm3a278qwewls"]
-
-[ext_resource type="Script" uid="uid://cdh0r0rgddy2q" path="res://Scripts/interactables/bush.gd" id="1_de378"]
-[ext_resource type="Texture2D" uid="uid://belog1xv0kuxd" path="res://Assets/bush.png" id="2_de378"]
-
-[sub_resource type="Shader" id="Shader_de378"]
-code = "shader_type canvas_item;
+shader_type canvas_item;
 
 
 
@@ -170,50 +164,4 @@ void fragment() {
 
 	}
 
-}"
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_1g8tu"]
-shader = SubResource("Shader_de378")
-shader_parameter/get_hit = false
-shader_parameter/hit_effect = 0.30000001425
-shader_parameter/shake_intensity = 10.0
-shader_parameter/flash_speed = 30.0
-shader_parameter/flash_color = Color(1, 0, 0, 1)
-shader_parameter/render_noise = false
-shader_parameter/amplitude = 0.05
-shader_parameter/time_scale = 0.04
-shader_parameter/noise_scale = 0.001
-shader_parameter/rotation_strength = 1.0
-shader_parameter/rotation_pivot = Vector2(0.5, 1)
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_vd8au"]
-radius = 38.052597
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_tqfvg"]
-size = Vector2(89, 78)
-
-[node name="bush" type="StaticBody2D" unique_id=1652929144 node_paths=PackedStringArray("sprite_1")]
-script = ExtResource("1_de378")
-sprite_1 = NodePath("Sprite2D")
-metadata/_custom_type_script = "uid://bhhemxbuevwxu"
-
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=912964129]
-z_index = 5
-material = SubResource("ShaderMaterial_1g8tu")
-position = Vector2(-2.5, 5.500004)
-scale = Vector2(0.9609375, 0.8854167)
-texture = ExtResource("2_de378")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1604382433]
-position = Vector2(-2, 14)
-shape = SubResource("CircleShape2D_vd8au")
-disabled = true
-
-[node name="DetectionBox" type="Area2D" parent="." unique_id=2116839669]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionBox" unique_id=1609749411]
-position = Vector2(0.5, 9)
-shape = SubResource("RectangleShape2D_tqfvg")
-
-[connection signal="body_entered" from="DetectionBox" to="." method="_on_detection_box_body_entered"]
-[connection signal="body_exited" from="DetectionBox" to="." method="_on_detection_box_body_exited"]
+}
