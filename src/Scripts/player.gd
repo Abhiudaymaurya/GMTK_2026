@@ -63,7 +63,7 @@ func _ready() -> void:
 	#signalbus.player_died.connect(_on_player_died)
 
 func _unhandled_input(event: InputEvent) -> void:
-	if event.is_action_pressed("contextual") and current_context and GameManager.is_game_end:
+	if event.is_action_pressed("contextual") and GameManager.is_game_end:
 		_go_back()
 
 	if event.is_action_pressed("contextual") and current_context and !GameManager.is_player_movement_freeze:
