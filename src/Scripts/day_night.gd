@@ -3,6 +3,7 @@ extends CanvasModulate
 @export var gradient_texture: GradientTexture1D
 @export var day_length_in_minutes: float = 5.0
 @export var initial_hour: float = 12.0
+@export var DAY_DURATION := 60.0 # seconds (1 minute)
 
 var time: float = 0.0
 var day: int = 0
@@ -21,7 +22,6 @@ func _process(delta: float) -> void:
 	if GameManager.is_player_movement_freeze:
 		return
 		
-	const DAY_DURATION := 60.0 # seconds (1 minute)
 
 	time += delta / DAY_DURATION
 

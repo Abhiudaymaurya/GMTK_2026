@@ -2,9 +2,14 @@
 
 [ext_resource type="Script" uid="uid://cdvltf124fgup" path="res://Autoload/audio_manager.gd" id="1_2httl"]
 [ext_resource type="AudioStream" uid="uid://m1klqlqalxry" path="res://Assets/audio/game_audio/day_audio/Oxidized leaf.mp3" id="2_7ha7v"]
+[ext_resource type="AudioStream" uid="uid://ce53sn74xomdx" path="res://Assets/audio/game_audio/day_audio/coffeti_audio.mp3" id="3_vgccb"]
 
 [node name="AudioManager" type="Node2D" unique_id=1561339227]
 script = ExtResource("1_2httl")
 
 [node name="MusicPlayer" type="AudioStreamPlayer" parent="." unique_id=844415139]
 stream = ExtResource("2_7ha7v")
+
+[node name="MusicPlayerConfetti" type="AudioStreamPlayer" parent="." unique_id=1909632659]
+stream = ExtResource("3_vgccb")
+volume_db = 15.0

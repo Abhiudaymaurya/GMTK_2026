@@ -199,6 +199,7 @@ func _on_day_change(new_day: int) -> void:
 	AudioManager.play_day(new_day);
 	EnvironmentManager.change_envirement(new_day);
 	print("called_env_with_",new_day)
+	
 	await black_screen(title, description, animation_player, typewriter_audio,
 		days_text,
 			"Another day has passed.", is_game_end

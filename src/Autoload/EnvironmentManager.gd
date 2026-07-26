@@ -7,7 +7,9 @@ const SIMPLE_RAIN = preload("uid://cgvdb1ls77u7i")
 const SIMPLE_SNOW = preload("uid://6fb38jkkslid")
 const SUNNY = preload("uid://37q2mvux2lmy")
 const COFFETI_ANIMATION_SHADER = preload("uid://bac6jk5g4qtpx")
+
 var material : ShaderMaterial;
+
 enum Weather {
 	SUNNY,
 	RAIN,
@@ -46,17 +48,17 @@ func _process(delta):
 		_apply_shader();
 
 func change_envirement(day : int):
-	if day  <=  3:
+	if day  <=  2:
 		current_weather = Weather.RAIN;
+		
+	elif day == 3:
+		current_weather = Weather.SNOW;
 		
 	elif day == 4:
 		current_weather = Weather.SUNNY;
 		
 	elif day == 5:
 		current_weather = Weather.SNOW;
-		
-	elif day == 6:
-		current_weather = Weather.SUNNY;
 		
 	elif day == 7:
 		current_weather = Weather.RAIN;

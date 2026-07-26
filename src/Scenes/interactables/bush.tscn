@@ -198,7 +198,6 @@ sprite_1 = NodePath("Sprite2D")
 metadata/_custom_type_script = "uid://bhhemxbuevwxu"
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=912964129]
-z_index = 5
 material = SubResource("ShaderMaterial_1g8tu")
 position = Vector2(-2.5, 5.500004)
 scale = Vector2(0.9609375, 0.8854167)

@@ -1,13 +1,16 @@
 extends Node
 
 @onready var music_player: AudioStreamPlayer = $MusicPlayer
+@onready var music_player_confetti: AudioStreamPlayer = $MusicPlayerConfetti
 
 #external music
 const game_over_music = preload("uid://cqgc81jst6tei");
 const win_music = preload("uid://dvb6fj5i3mdld");
 const Main_Menu = preload("uid://becvdf55235tl")
 const OXIDIZED_LEAF_GameStart = preload("uid://m1klqlqalxry")
-const COFFETI_AUDIO = preload("uid://ce53sn74xomdx")
+
+var local_day;
+
 
 var day_music : Array =  [
 	#night-track
@@ -27,6 +30,7 @@ var day_music : Array =  [
 
 
 func play_day(day:int):
+	local_day = day
 	if day < 1 or day > day_music.size():
 		return
 
@@ -60,6 +64,5 @@ func main_menu():
 	music_player.play()
 
 func play_confetti_audio():
-	music_player.stop()
-	music_player.stream = COFFETI_AUDIO
-	music_player.play()
+	music_player_confetti.stop()
+	music_player_confetti.play()
