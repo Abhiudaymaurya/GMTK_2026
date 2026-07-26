@@ -36,8 +36,10 @@ var speed: float = NORMAL_SPEED
 
 var prev_hint_text: String = ""
 
+
 var last_dir: Vector2 = Vector2.DOWN
-var current_context = null # Used by the context button to call current_context.interact()
+var current_context = null
+var active_contexts: Array = []
 
 func _ready() -> void:
 	add_to_group("player")
@@ -88,16 +90,36 @@ func _physics_process(delta: float) -> void:
 
 func _on_context_update(interactable, hint_text: String, entered: bool) -> void:
 	if entered:
-		current_context = interactable
-		
-		hint_lable.visible = true
-		_set_hint(hint_text)
+		active_contexts.erase(interactable)
 
+		active_contexts.append({
+			"interactable": interactable,
+			"hint": hint_text
+		})
+
+		_set_current_context()
+		
 	else:
-		if current_context == interactable:
-			current_context = null
-			_set_hint("")
-			hint_lable.visible = false
+		for i in range(active_contexts.size() - 1, -1, -1):
+			if active_contexts[i]["interactable"] == interactable:
+				active_contexts.remove_at(i)
+				break
+
+		_set_current_context()
+
+func _set_current_context() -> void:
+	if active_contexts.is_empty():
+		current_context = null
+		_set_hint("")
+		hint_lable.visible = false
+		return
+
+	var latest_context: Dictionary = active_contexts.back()
+
+	current_context = latest_context["interactable"]
+
+	hint_lable.visible = true
+	_set_hint(latest_context["hint"])
 
 
 func _set_hint(hint: String) -> void:
