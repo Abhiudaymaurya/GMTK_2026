@@ -64,8 +64,13 @@ func _unhandled_input(event: InputEvent) -> void:
 
 func _physics_process(delta: float) -> void:
 	if GameManager.is_player_movement_freeze:
-		return ;
-		
+		$"../ui".visible = false
+		return
+	else:
+		if not $"../ui".visible:
+			$"../ui".visible = true
+
+
 	var direction := Input.get_vector("move_left", "move_right", "move_up", "move_down").normalized()
 
 	_handle_animation(direction)

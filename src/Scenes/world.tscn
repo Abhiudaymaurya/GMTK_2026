@@ -15,6 +15,10 @@
 [ext_resource type="PackedScene" uid="uid://bm3a278qwewls" path="res://Scenes/interactables/bush.tscn" id="11_e0ngr"]
 [ext_resource type="PackedScene" uid="uid://ctsqu7r3hgdhl" path="res://Scenes/lodge.tscn" id="11_ikia7"]
 [ext_resource type="PackedScene" uid="uid://dqti48ik3hujf" path="res://Scenes/storage.tscn" id="12_7yui6"]
+[ext_resource type="Texture2D" uid="uid://dyqjkfxxh87sc" path="res://Assets/UI/keyboard_w.png" id="16_axeuq"]
+[ext_resource type="Texture2D" uid="uid://b6dd2upecq71b" path="res://Assets/UI/keyboard_a.png" id="17_1cojt"]
+[ext_resource type="Texture2D" uid="uid://dhc5acj50bsxl" path="res://Assets/UI/keyboard_s.png" id="18_yq1aw"]
+[ext_resource type="Texture2D" uid="uid://cduw1x7f5p11s" path="res://Assets/UI/keyboard_d.png" id="19_pyn1s"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_k7acu"]
 texture = ExtResource("1_5ukr8")
@@ -1346,3 +1350,23 @@ shape = SubResource("RectangleShape2D_tqfvg")
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="border" unique_id=1187106098]
 position = Vector2(2261, 582)
 shape = SubResource("RectangleShape2D_tqfvg")
+
+[node name="ui" type="Node2D" parent="." unique_id=1058183550]
+z_index = -1
+position = Vector2(-592, -288)
+scale = Vector2(0.5, 0.5)
+
+[node name="KeyboardW" type="Sprite2D" parent="ui" unique_id=1677488148]
+position = Vector2(0, -60)
+texture = ExtResource("16_axeuq")
+
+[node name="KeyboardA" type="Sprite2D" parent="ui" unique_id=1482190695]
+position = Vector2(-60, 0)
+texture = ExtResource("17_1cojt")
+
+[node name="KeyboardS" type="Sprite2D" parent="ui" unique_id=1875146359]
+texture = ExtResource("18_yq1aw")
+
+[node name="KeyboardD" type="Sprite2D" parent="ui" unique_id=1009116211]
+position = Vector2(60, 0)
+texture = ExtResource("19_pyn1s")
