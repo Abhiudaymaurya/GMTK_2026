@@ -31,7 +31,6 @@ sprite_1 = NodePath("Sprite2D")
 metadata/_custom_type_script = "uid://bhhemxbuevwxu"
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=912964129]
-z_index = 5
 material = SubResource("ShaderMaterial_yg7hb")
 texture = ExtResource("2_5mkji")
 
