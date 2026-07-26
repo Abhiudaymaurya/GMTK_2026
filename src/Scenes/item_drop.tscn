@@ -1,10 +1,8 @@
 [gd_scene format=3 uid="uid://dnfujoxoj8705"]
 
 [ext_resource type="Script" uid="uid://dyb2g3cnua5vi" path="res://Scripts/item_drop.gd" id="1_qhkgj"]
-[ext_resource type="Texture2D" uid="uid://dj4y3ml56dkkb" path="res://icon.svg" id="2_20isf"]
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_0fj1v"]
-size = Vector2(50, 50)
+[ext_resource type="Texture2D" uid="uid://cm3i7e1eft4y1" path="res://Assets/UI/wod.png" id="2_x6wyg"]
+[ext_resource type="Texture2D" uid="uid://bcwpglc668k0" path="res://Assets/UI/ston.png" id="3_saics"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_kn0ld"]
 size = Vector2(30, 30)
@@ -12,8 +10,8 @@ size = Vector2(30, 30)
 [node name="item_drop" type="Node2D" unique_id=8068003]
 script = ExtResource("1_qhkgj")
 item_drops = Dictionary[int, Texture2D]({
-0: ExtResource("2_20isf"),
-1: SubResource("PlaceholderTexture2D_0fj1v"),
+0: ExtResource("2_x6wyg"),
+1: ExtResource("3_saics"),
 2: SubResource("PlaceholderTexture2D_kn0ld")
 })
 

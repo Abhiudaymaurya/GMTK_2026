@@ -9,14 +9,27 @@ var upgrade_costs := [
 	{GameManager.Item.WOOD: 25, GameManager.Item.STONE: 20},
 ]
 
-func _process(_delta: float) -> void:
-	$resources.text = str("resources: ", GameManager.player_inventory)
-
+func _get_upgrade_hint() -> String:
 	if GameManager.lodge_tier >= max_tier:
-		$cost.text = "MAXED LVL"
-	else:
-		$cost.text = str("cost: ", upgrade_costs[GameManager.lodge_tier + 1])
+		return "Lodge Level: %d\nMAXED" % GameManager.lodge_tier
 
+	var cost: Dictionary = upgrade_costs[GameManager.lodge_tier + 1]
+	var hint: String = "Lodge Level: %d\nPress [img=32]res://Assets/UI/keyboard_e.png[/img] to upgrade lodge\nCost: " % (GameManager.lodge_tier + 1)
+
+	for resource in cost:
+		var amount: int = cost[resource]
+		hint += "[img=32]%s[/img] : %d " % [_get_item_icon(resource), amount]
+
+	return hint
+
+func _get_item_icon(item: GameManager.Item) -> String:
+	match item:
+		GameManager.Item.WOOD:
+			return "res://Assets/UI/wod.png"
+		GameManager.Item.STONE:
+			return "res://Assets/UI/ston.png"
+
+	return ""
 
 func can_upgrade() -> bool:
 	var cost = upgrade_costs[GameManager.lodge_tier + 1]
@@ -46,19 +59,12 @@ func try_upgrade() -> bool:
 
 func interact() -> void:
 	try_upgrade()
-
-func _on_button_2_pressed() -> void:
-	print("added")
-	GameManager.inv_add_item(GameManager.Item.WOOD, 1)
-
-func _on_button_3_pressed() -> void:
-	GameManager.inv_add_item(GameManager.Item.STONE, 1)
-
+	SignalBus.update_hint.emit(_get_upgrade_hint())
 
 func _on_detection_box_body_exited(body: Node2D) -> void:
 	if body.is_in_group("player"):
-		SignalBus.context_update.emit(self , false)
+		SignalBus.context_update.emit(self , _get_upgrade_hint(), false)
 
 func _on_detection_box_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player"):
-		SignalBus.context_update.emit(self , true)
+		SignalBus.context_update.emit(self , _get_upgrade_hint(), true)

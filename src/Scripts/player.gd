@@ -25,6 +25,9 @@ var speed: float = NORMAL_SPEED
 #inGame_UI - black_screen_description
 @onready var description: Label = $InGame_UI/balck_screen/MarginContainer/VBoxContainer/description
 
+@onready var hint_lable: RichTextLabel = $InGame_UI/hint/lable
+
+var prev_hint_text: String = ""
 
 var last_dir: Vector2 = Vector2.DOWN
 var current_context = null # Used by the context button to call current_context.interact()
@@ -32,6 +35,7 @@ var current_context = null # Used by the context button to call current_context.
 func _ready() -> void:
 	add_to_group("player")
 	SignalBus.context_update.connect(_on_context_update);
+	SignalBus.update_hint.connect(_set_hint)
 	
 	GameManager.basic_cutscene(
 		camera_2d, control,
@@ -68,13 +72,32 @@ func _physics_process(delta: float) -> void:
 
 	move_and_slide()
 
-func _on_context_update(interactable, entered: bool) -> void:
+func _on_context_update(interactable, hint_text: String, entered: bool) -> void:
 	if entered:
 		current_context = interactable
+		
+		hint_lable.visible = true
+		_set_hint(hint_text)
+
 	else:
 		if current_context == interactable:
 			current_context = null
+			_set_hint("")
+			hint_lable.visible = false
 
+
+func _set_hint(hint: String) -> void:
+	if prev_hint_text == hint:
+		return
+
+	hint_lable.visible_characters = 0
+	hint_lable.text = hint
+	prev_hint_text = hint
+
+	for i in hint_lable.get_total_character_count():
+		hint_lable.visible_characters = i + 1
+		await get_tree().create_timer(GameManager.dialogue_speed).timeout
+	
 
 func handle_animation(dir: Vector2) -> void:
 	if is_player_in_water():

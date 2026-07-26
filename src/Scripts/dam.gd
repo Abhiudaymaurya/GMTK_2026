@@ -22,6 +22,7 @@ func _ready() -> void:
 
 func interact() -> void:
 	try_repair()
+	SignalBus.update_hint.emit(get_hint())
 
 
 func _on_day_changed(_day: int) -> void:
@@ -42,8 +43,8 @@ func get_repair_cost() -> Dictionary:
 	var multiplier: float = pow(1.0 + damage_ratio, cost_exponent)
 
 	return {
-		GameManager.Item.WOOD: ceil(base_wood_cost * multiplier),
-		GameManager.Item.STONE: ceil(base_stone_cost * multiplier)
+		GameManager.Item.WOOD: ceili(base_wood_cost * multiplier),
+		GameManager.Item.STONE: ceili(base_stone_cost * multiplier)
 	}
 
 
@@ -100,13 +101,68 @@ func get_health() -> int:
 
 
 func get_health_ratio() -> float:
-	return float(GameManager.dam_health) / max_health
+	return float(GameManager.dam_health) / float(max_health)
+
+
+func _get_item_icon(item: GameManager.Item) -> String:
+	match item:
+		GameManager.Item.WOOD:
+			return "res://Assets/UI/wod.png"
+		GameManager.Item.STONE:
+			return "res://Assets/UI/ston.png"
+
+	return ""
+
+
+func get_hint() -> String:
+	var health: int = GameManager.dam_health
+	var health_ratio: float = get_health_ratio()
+
+	var health_color: String
+
+	if health_ratio > 0.6:
+		health_color = "green"
+	elif health_ratio > 0.3:
+		health_color = "yellow"
+	else:
+		health_color = "red"
+
+	# Dam destroyed
+	if is_destroyed:
+		return "[color=red]DAM DESTROYED[/color]\nHealth: [color=red]0/%d[/color]" % max_health
+
+	# Dam fully repaired
+	if health >= max_health:
+		return "Dam Health: [color=%s]%d/%d[/color]\nDam is fully repaired" % [
+			health_color,
+			health,
+			max_health
+		]
+
+	var cost: Dictionary = get_repair_cost()
+
+	var hint: String = "Dam Health: [color=%s]%d/%d[/color]\n" % [
+		health_color,
+		health,
+		max_health
+	]
+
+	hint += "Press [img=32]res://Assets/UI/keyboard_e.png[/img] to repair dam\n"
+	hint += "Cost: "
+
+	
+	for resource in cost:
+		var amount: int = cost[resource]
+		hint += "[img=32]%s[/img] : %d " % [_get_item_icon(resource), amount]
+
+	return hint
 
 
 func _on_detection_box_body_exited(body: Node2D) -> void:
 	if body.is_in_group("player"):
-		SignalBus.context_update.emit(self , false)
+		SignalBus.context_update.emit(self , get_hint(), false)
+
 
 func _on_detection_box_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player"):
-		SignalBus.context_update.emit(self , true)
+		SignalBus.context_update.emit(self , get_hint(), true)

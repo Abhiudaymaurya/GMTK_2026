@@ -2,21 +2,12 @@
 
 [ext_resource type="Script" uid="uid://bkqc6ysm53n88" path="res://Scripts/lodge.gd" id="1_63xie"]
 [ext_resource type="Texture2D" uid="uid://ba5riiodpf7e1" path="res://Assets/lodge.png" id="2_vefjd"]
-[ext_resource type="FontFile" uid="uid://beuioh8s6koim" path="res://Font/FORESTANA.ttf" id="3_258wy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_258wy"]
 size = Vector2(167, 88)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kcs4j"]
 size = Vector2(226, 186)
-
-[sub_resource type="LabelSettings" id="LabelSettings_vefjd"]
-font = ExtResource("3_258wy")
-font_size = 43
-
-[sub_resource type="LabelSettings" id="LabelSettings_258wy"]
-font = ExtResource("3_258wy")
-font_size = 43
 
 [node name="Lodge" type="Node2D" unique_id=615753691]
 script = ExtResource("1_63xie")
@@ -41,31 +32,6 @@ position = Vector2(0, -40)
 position = Vector2(-1, -1)
 shape = SubResource("RectangleShape2D_kcs4j")
 debug_color = Color(0.22352941, 0, 1, 0.41960785)
-
-[node name="resources" type="Label" parent="." unique_id=1852063731]
-custom_minimum_size = Vector2(100, 50)
-offset_left = -109.0
-offset_top = -204.0
-offset_right = 130.0
-offset_bottom = -154.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 32
-text = "lodge:"
-label_settings = SubResource("LabelSettings_vefjd")
-horizontal_alignment = 1
-vertical_alignment = 1
-autowrap_mode = 3
-
-[node name="cost" type="Label" parent="." unique_id=1932219874]
-offset_left = -165.0
-offset_top = 32.0
-offset_right = 159.0
-offset_bottom = 77.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 32
-text = "cost: "
-label_settings = SubResource("LabelSettings_258wy")
-horizontal_alignment = 1
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_detection_box_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_detection_box_body_exited"]

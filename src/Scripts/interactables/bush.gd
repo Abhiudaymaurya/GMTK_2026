@@ -25,6 +25,8 @@ func interact() -> void:
 
 	await get_tree().create_timer(cooldown).timeout
 	can_progress_step = true
+	
+	super.interact()
 
 func drop() -> void:
 	super.drop()

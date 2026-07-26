@@ -1,9 +1,7 @@
 [gd_scene format=3 uid="uid://dqti48ik3hujf"]
 
 [ext_resource type="Script" uid="uid://dl852nd5y3hfw" path="res://Scripts/storage.gd" id="1_kgl67"]
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_tqfvg"]
-size = Vector2(128, 128)
+[ext_resource type="Texture2D" uid="uid://cjr85w0nxxk4f" path="res://Assets/Ihateit.png" id="2_j3ewu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tqfvg"]
 size = Vector2(128, 128)
@@ -12,18 +10,10 @@ size = Vector2(128, 128)
 script = ExtResource("1_kgl67")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=369770707]
-texture = SubResource("PlaceholderTexture2D_tqfvg")
+texture = ExtResource("2_j3ewu")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=519968775]
 shape = SubResource("RectangleShape2D_tqfvg")
-
-[node name="LodgeLabel" type="Label" parent="." unique_id=265495901]
-offset_left = -46.0
-offset_top = -24.0
-offset_right = 39.0
-offset_bottom = 21.0
-theme_override_font_sizes/font_size = 24
-text = "STORAGE"
 
 [connection signal="body_entered" from="." to="." method="_on_detection_box_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_detection_box_body_exited"]
